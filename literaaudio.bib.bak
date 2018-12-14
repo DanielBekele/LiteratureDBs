@@ -226,4 +226,33 @@
   url       = {http://cds.cern.ch/record/1625017},
 }
 
+@Article{Fletcher1940,
+  author    = {Harvey Fletcher},
+  title     = {Auditory Patterns},
+  journal   = {Reviews of Modern Physics},
+  year      = {1940},
+  volume    = {12},
+  number    = {1},
+  pages     = {47--65},
+  month     = {jan},
+  doi       = {10.1103/revmodphys.12.47},
+  file      = {:prosem audio\\RevModPhys.12.47.pdf:PDF},
+  publisher = {American Physical Society ({APS})},
+}
+
+@Article{Zwicker:1955:1610-1928:67,
+  author        = {Zwicker, E.},
+  title         = {"Der ungew{\"o}hnliche Amplitudengang der nichtlinearen Verzerrungen des Ohres"},
+  journal       = {Acta Acustica united with Acustica},
+  year          = {"1955"},
+  volume        = {"5"},
+  number        = {"1", publication date ="1955-01-01T00:00:00", pages = "67-74", itemtype = "ARTICLE", issn = "1610-1928", url = "https://www.ingentaconnect.com/content/dav/aaua/1955/00000005/a00101s1/art00003", author = "Zwicker, E.", abstract = "The quadratic and cubic non-linearities of the ear have been measured by a compensation method. The subjective perceptible difference tone is made to disappear by giving to the ear a tone of the same frequency adjustable in amplitude and phase.There results an exact quadratic law for the dependence of the quadratic difference tone on the amplitude of the primary tones, whereas the cubic difference tone decreases only very slowly with decreasing sound pressure of the primary tones. This behaviour of the cubic difference tone disagrees completely with the law of a simple parabola of third order. It is supposed that the ear has a symmetrical characteristic with a bend at about \textpm 0. 1 bar (\textpm 0.01 N/m2).",},
+  abstract      = {The quadratic and cubic non-linearities of the ear have been measured by a compensation method. The subjective perceptible difference tone is made to disappear by giving to the ear a tone of the same frequency adjustable in amplitude and phase.There results an exact quadratic law
+for the dependence of the quadratic difference tone on the amplitude of the primary tones, whereas the cubic difference tone decreases only very slowly with decreasing sound pressure of the primary tones. This behaviour of the cubic difference tone disagrees completely with the law of a simple
+parabola of third order. It is supposed that the ear has a symmetrical characteristic with a bend at about \textpm 0. 1 bar (\textpm 0.01 N/m2).},
+  file          = {:prosem audio/s3.pdf:PDF},
+  parent_itemid = {"infobike://dav/aaua"},
+  publishercode = {"dav"},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
