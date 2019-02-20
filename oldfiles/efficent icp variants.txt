@@ -1,0 +1,12 @@
+@INPROCEEDINGS{924423, 
+author={S. Rusinkiewicz and M. Levoy}, 
+booktitle={Proceedings Third International Conference on 3-D Digital Imaging and Modeling}, 
+title={Efficient variants of the ICP algorithm}, 
+year={2001}, 
+volume={}, 
+number={}, 
+pages={145-152}, 
+keywords={distance measurement;image processing;minimisation;real-time systems;iterative closest point algorithm;geometric alignment;three-dimensional models;minimization strategy;nearly-flat meshes;inscribed surfaces;uniform sampling;range images;real-time 3D model acquisition;model-based tracking;Iterative closest point algorithm;Iterative algorithms;Convergence;Solid modeling;Iterative methods;Geometry;Layout;Minimization methods;Image sampling;Rough surfaces}, 
+doi={10.1109/IM.2001.924423}, 
+ISSN={}, 
+month={May},}

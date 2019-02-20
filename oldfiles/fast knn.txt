@@ -1,0 +1,12 @@
+@INPROCEEDINGS{4563100, 
+author={V. {Garcia} and E. {Debreuve} and M. {Barlaud}}, 
+booktitle={2008 IEEE Computer Society Conference on Computer Vision and Pattern Recognition Workshops}, 
+title={Fast k nearest neighbor search using GPU}, 
+year={2008}, 
+volume={}, 
+number={}, 
+pages={1-6}, 
+keywords={computer graphics;image retrieval;search problems;statistical analysis;video signal processing;fast k nearest neighbor search;GPU;statistical measures;information theory;image processing;video processing;image retrieval;video object tracking;Kullback-Leibler divergence;efficient variable-bandwidth kernel-based estimators;approximated nearest neighbor library;graphics processing units;NVIDIA CUDA API;brute force algorithm;quasi-linear behavior;Nearest neighbor searches;Information theory;Information retrieval;Image retrieval;Entropy;Density measurement;Binary trees;Libraries;Graphics;Concurrent computing}, 
+doi={10.1109/CVPRW.2008.4563100}, 
+ISSN={2160-7508}, 
+month={June},}

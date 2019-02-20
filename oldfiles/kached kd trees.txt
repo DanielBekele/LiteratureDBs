@@ -1,0 +1,12 @@
+@INPROCEEDINGS{4296783, 
+author={A. {Nuchter} and K. {Lingemann} and J. {Hertzberg}}, 
+booktitle={Sixth International Conference on 3-D Digital Imaging and Modeling (3DIM 2007)}, 
+title={Cached k-d tree search for ICP algorithms}, 
+year={2007}, 
+volume={}, 
+number={}, 
+pages={419-426}, 
+keywords={computational geometry;iterative methods;solid modelling;tree searching;cached k-d tree search;iterative closest point algorithm;de facto standard;geometric alignment;data sets;Iterative closest point algorithm;Cache memory;Iterative algorithms;Clouds;Solid modeling;Robotics and automation;Neodymium;Quaternions;Computer science;Knowledge based systems}, 
+doi={10.1109/3DIM.2007.15}, 
+ISSN={1550-6185}, 
+month={Aug},}
