@@ -5,7 +5,7 @@
   title   = {Method for registration of 3-D shapes},
   year    = {1992},
   doi     = {10.1117/12.57955},
-  file    = {:568.pdf:PDF},
+  file    = {:586.pdf:PDF},
   journal = {Proc.SPIE},
   pages   = {1611 - 1611 - 21},
   url     = {https://doi.org/10.1117/12.57955},
@@ -63,6 +63,29 @@
   publisher = {{IEEE}},
   doi       = {10.1109/cvprw.2008.4563100},
   file      = {:04563100.pdf:PDF},
+}
+
+@InProceedings{Chao,
+  author    = {Chen Chao and Ioannis Chao},
+  title     = {Semi-Automatic Range to Range Registration: A Feature-Based Method},
+  booktitle = {Fifth International Conference on 3-D Digital Imaging and Modeling (3DIM{\textquotesingle}05)},
+  publisher = {{IEEE}},
+  doi       = {10.1109/3dim.2005.72},
+  file      = {:01443253.pdf:PDF},
+}
+
+@Article{Salvi2007,
+  author    = {Joaquim Salvi and Carles Matabosch and David Fofi and Josep Forest},
+  title     = {A review of recent range image registration methods with accuracy evaluation},
+  journal   = {Image and Vision Computing},
+  year      = {2007},
+  volume    = {25},
+  number    = {5},
+  pages     = {578--596},
+  month     = {may},
+  doi       = {10.1016/j.imavis.2006.05.012},
+  file      = {:1-s2.0-S0262885606001594-main.pdf:PDF},
+  publisher = {Elsevier {BV}},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
