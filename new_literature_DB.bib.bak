@@ -12,7 +12,7 @@
   volume  = {1611},
 }
 
-@Article{Bentley:1975:MBS:361002.361007,
+@Article{Bentley1975,
   author     = {Bentley, Jon Louis},
   title      = {Multidimensional Binary Search Trees Used for Associative Searching},
   journal    = {Commun. ACM},
@@ -85,6 +85,19 @@
   month     = {may},
   doi       = {10.1016/j.imavis.2006.05.012},
   file      = {:1-s2.0-S0262885606001594-main.pdf:PDF},
+  publisher = {Elsevier {BV}},
+}
+
+@Article{Ji2017,
+  author    = {Shijun Ji and Yongcong Ren and Zhao Ji and Xiaolong Liu and Gao Hong},
+  title     = {An improved method for registration of point cloud},
+  journal   = {Optik},
+  year      = {2017},
+  volume    = {140},
+  pages     = {451--458},
+  month     = {jul},
+  doi       = {10.1016/j.ijleo.2017.01.041},
+  file      = {:1-s2.0-S0030402617300517-main.pdf:PDF},
   publisher = {Elsevier {BV}},
 }
 
