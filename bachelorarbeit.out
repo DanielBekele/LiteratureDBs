@@ -7,19 +7,31 @@
 \BOOKMARK [2][-]{subsection.1.1.2}{1.1.2 KD-Trees}{section.1.1}% 7
 \BOOKMARK [2][-]{subsection.1.1.3}{1.1.3 The iterative closest point algorithm}{section.1.1}% 8
 \BOOKMARK [2][-]{subsection.1.1.4}{1.1.4 Subsampling}{section.1.1}% 9
-\BOOKMARK [0][-]{chapter.2}{2 Interactive VR-Concepts}{}% 10
-\BOOKMARK [1][-]{section.2.1}{2.1 The virtual environment}{chapter.2}% 11
-\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 The virtual workspace}{section.2.1}% 12
-\BOOKMARK [2][-]{subsection.2.1.2}{2.1.2 Scaling}{section.2.1}% 13
-\BOOKMARK [1][-]{section.2.2}{2.2 User centred Design for VR}{chapter.2}% 14
-\BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 Constraints and Affordances}{section.2.2}% 15
-\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 Visual - physical conflict}{section.2.2}% 16
-\BOOKMARK [2][-]{subsection.2.2.3}{2.2.3 Feedback design}{section.2.2}% 17
-\BOOKMARK [2][-]{subsection.2.2.4}{2.2.4 Picking and selection process}{section.2.2}% 18
-\BOOKMARK [2][-]{subsection.2.2.5}{2.2.5 Grouped scans}{section.2.2}% 19
-\BOOKMARK [2][-]{subsection.2.2.6}{2.2.6 Scan positioning}{section.2.2}% 20
-\BOOKMARK [2][-]{subsection.2.2.7}{2.2.7 Additional application concepts}{section.2.2}% 21
-\BOOKMARK [1][-]{section.2.3}{2.3 eine Grafik}{chapter.2}% 22
-\BOOKMARK [2][-]{subsection.2.3.1}{2.3.1 Etwas Mathe}{section.2.3}% 23
-\BOOKMARK [3][-]{subsubsection.2.3.1.1}{2.3.1.1 Verweise auf Literatur}{subsection.2.3.1}% 24
-\BOOKMARK [0][-]{chapter*.5}{Bibliography}{}% 25
+\BOOKMARK [1][-]{section.1.2}{1.2 Analization and tests of used methods}{chapter.1}% 10
+\BOOKMARK [2][-]{subsection.1.2.1}{1.2.1 Test Setup}{section.1.2}% 11
+\BOOKMARK [2][-]{subsection.1.2.2}{1.2.2 Single point clouds registration accuracy}{section.1.2}% 12
+\BOOKMARK [2][-]{subsection.1.2.3}{1.2.3 Single point clouds registration runtimes}{section.1.2}% 13
+\BOOKMARK [2][-]{subsection.1.2.4}{1.2.4 Multiple point clouds registration accuracy}{section.1.2}% 14
+\BOOKMARK [2][-]{subsection.1.2.5}{1.2.5 Multiple point clouds registration runtimes}{section.1.2}% 15
+\BOOKMARK [0][-]{chapter.2}{2 Interactive VR-Concepts}{}% 16
+\BOOKMARK [1][-]{section.2.1}{2.1 The virtual environment}{chapter.2}% 17
+\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 The virtual workspace}{section.2.1}% 18
+\BOOKMARK [2][-]{subsection.2.1.2}{2.1.2 Scaling}{section.2.1}% 19
+\BOOKMARK [1][-]{section.2.2}{2.2 User centred Design for VR}{chapter.2}% 20
+\BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 Constraints and Affordances}{section.2.2}% 21
+\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 Visual - physical conflict}{section.2.2}% 22
+\BOOKMARK [2][-]{subsection.2.2.3}{2.2.3 Feedback design}{section.2.2}% 23
+\BOOKMARK [2][-]{subsection.2.2.4}{2.2.4 Picking and selection process}{section.2.2}% 24
+\BOOKMARK [2][-]{subsection.2.2.5}{2.2.5 Grouped scans}{section.2.2}% 25
+\BOOKMARK [2][-]{subsection.2.2.6}{2.2.6 Scan positioning}{section.2.2}% 26
+\BOOKMARK [2][-]{subsection.2.2.7}{2.2.7 Additional application concepts}{section.2.2}% 27
+\BOOKMARK [0][-]{chapter.3}{3 Interactive VR-user study}{}% 28
+\BOOKMARK [1][-]{section.3.1}{3.1 Test setup}{chapter.3}% 29
+\BOOKMARK [2][-]{subsection.3.1.1}{3.1.1 Equipment}{section.3.1}% 30
+\BOOKMARK [2][-]{subsection.3.1.2}{3.1.2 Guidance}{section.3.1}% 31
+\BOOKMARK [1][-]{section.3.2}{3.2 Test results}{chapter.3}% 32
+\BOOKMARK [0][-]{chapter.4}{4 Evaluation}{}% 33
+\BOOKMARK [0][-]{chapter.5}{5 Problems}{}% 34
+\BOOKMARK [1][-]{section.5.1}{5.1 Implementation problems}{chapter.5}% 35
+\BOOKMARK [1][-]{section.5.2}{5.2 Hardware problems}{chapter.5}% 36
+\BOOKMARK [0][-]{chapter*.4}{Bibliography}{}% 37

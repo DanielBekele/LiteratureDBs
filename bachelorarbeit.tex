@@ -129,7 +129,27 @@ To avoid this problem a subsampling method has been introduced, which uses rando
 
 To avoid large overhead due to the creation of randomized numbers the function uses the default and efficient random Microsoft c++ library <random.h> and only array access with offsets. If the ICP is called again with the same point clouds, the application uses the already stored values, further increasing its efficiency.
 
+\section{Analization and tests of used methods}
 
+In order to enhance the real time compability as well as the general accuracy of the used ICP methods, several test cases have been implemented. All tests rely on a given dataset from the chair of computergraphics(CHAIR), including a ground truth file. This file contains the correct rotations and translations to align the point clouds perfectly.
+
+ \subsection{Test Setup}
+
+The first test setup is a coarsed aligned state of a single pointcloud which will be then aligned to another single point cloud. The reached alignment will be then compared to the actual ground truth alignment and the error as well as the runtime will be measured for SICP as well as ICP. The afterwards used Kabsch algorithms runtime is measured too.
+
+The second test setup is the same single pointcloud which now is aligned to a group of already aligned point clouds. In this test setup subsampling plays an important role and the runtimes and accuracy between subsampled and unsubsampled alignments are compared.
+
+In the last test setup both starting parameters of the alignment algorithms are grouped and aligned point clouds. This test will as well compoare accuracy and runtime between subsampled and unsubsampled alignments.
+
+\subsection{Single point clouds  registration accuracy}
+
+...
+
+\subsection{Single point clouds registration runtimes}
+
+\subsection{Multiple point clouds registration accuracy}
+
+\subsection{Multiple point clouds registration runtimes}
 
 \chapter{Interactive VR-Concepts}
 
@@ -239,44 +259,44 @@ These linear blend is executed on colours as well, making hard colour switches o
 
 Some features of computer programs have evolved over the time and it is common to include them to all applications because of their general purpose. For example the possibility to restore the program state before the last action is a well known feature and commonly expected to be in every program. (FIND QUOTE)
 This feature is implemented by a stack which tracks all program states since the last project loading was called. The inverse function, restoring a state which was after the actual state but has been falsely reversed, is implemented too.(AUSDRUCK!)
+The repositioning of scans due to reversing or restoring action triggers an animation as well. This animation is similiar to the one used in the reposition execution animation and applies to colors, rotations and translations.
+
+\chapter{Interactive VR-user study}
+
+\section{Test setup}
+
+\subsection{Equipment}
+\subsection{Guidance}
+
+\section{Test results}
+
+\chapter{Evaluation}
+
+\chapter{Problems}
+
+\section{Implementation problems}
+
+The first task was to implement an environment to test and develop the interactive methods used for this study.
+However there were several problems that occured during this phase. The real problem was to find a appropriate libary that included a registration algorithm. The application used the version from the stanford university which had strange results when using the sparse ICP version. The results where nowhere near the actual results and about 13 meters away from the right aligment. Possible reasons for this is maybe the use of an older version of the Eigen library in the ICP algorithm. Since this library is incompatible with the framework the only remaining solution was to switch to the ICP algorithm which deliverd better results. Unfortunately this algorithm is nowhere nearly as stable as the sparse ICP algorithm. (BELEG) In order to prevent crashs during execution additional precausons had to be implemented such as check for infinity and NAN vectors, which should normally not occur at this point. The reason is that the ICP is not always numerical stable and can produce such results. Fortunately these are rare and occured only when trying to align point clouds that are not coarse aligned and contained outliers. Since the coarse alignment is taken care of by the user, in the application this problem is minor.
+
+\section{Hardware problems}
+
+When working with VR several individual components have to be taken care of. As for the VIVE HMD from valve, the actual rendering is not done solely by the application, but has to be passed as a render context to the VR compositer, this compositor then renders the pictures for the HMD. The ensurance of compability between both, application and compositor has to be given at any time. Since the development of such applications is not easy this problem caused several delays in the time plan and could not be solved until 2 weeks before the end of this thesis. In detail the driver components for an HMD system have all be written and then linked to the actual application. If the application fails to load any driver the HMD can not connect to the application. To give an example: Even the simple VR example using openGL provided by valve (GITHUBLINK) contains 2000 lines of code, from which are nearly 1200 only initialization functions to start up the actual environment. So all of these functions have to be included and adapted to the own application.
 
 
-10 usability report
 
-- Get users
-- Get their feedback 
-
-\section{eine Grafik}
-\begin{figure}[htbp]
-	\centering
-		\includegraphics{test.png}
-	\caption{beschriftung}
-	\label{fig:diplominf}
-\end{figure}
-
-
-\subsection{Etwas Mathe}
+%\section{eine Grafik}
+%\begin{figure}[htbp]
+%	\centering
+%		\includegraphics{test.png}
+%	\caption{beschriftung}
+%	\label{fig:diplominf}
+%\end{figure}
 
 \[
 \sum_{i=1}^{100}x_i
 \]
-noch mehr text
-\subsubsection{Verweise auf Literatur} 
 
-\paragraph{etwas quelltext}
-
-
-\begin{figure}[htbp]
-\begin{lstlisting}[frame=trbl]
-//comment
-for(int i = 0; i < 100;i++)
-{
-test(i);
-}
-\end{lstlisting}
-\end{figure}
-
-text
 
 \cite*{}
 \end{document}
