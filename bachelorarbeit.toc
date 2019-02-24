@@ -7,7 +7,20 @@
 \contentsline {subsection}{\numberline {1.1.2}KD-Trees}{3}{subsection.1.1.2}% 
 \contentsline {subsection}{\numberline {1.1.3}The iterative closest point algorithm}{4}{subsection.1.1.3}% 
 \contentsline {subsection}{\numberline {1.1.4}Subsampling}{5}{subsection.1.1.4}% 
-\contentsline {section}{\numberline {1.2}eine Grafik}{5}{section.1.2}% 
-\contentsline {subsection}{\numberline {1.2.1}Etwas Mathe}{5}{subsection.1.2.1}% 
-\contentsline {subsubsection}{\numberline {1.2.1.1}Verweise auf Literatur}{5}{subsubsection.1.2.1.1}% 
-\contentsline {paragraph}{\nonumberline etwas quelltext}{5}{lstnumber.-2.5}% 
+\contentsline {chapter}{\numberline {2}Interactive VR-Concepts}{6}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}The virtual environment}{6}{section.2.1}% 
+\contentsline {subsection}{\numberline {2.1.1}The virtual workspace}{6}{subsection.2.1.1}% 
+\contentsline {subsection}{\numberline {2.1.2}Scaling}{7}{subsection.2.1.2}% 
+\contentsline {section}{\numberline {2.2}User centred Design for VR}{7}{section.2.2}% 
+\contentsline {subsection}{\numberline {2.2.1}Constraints and Affordances}{7}{subsection.2.2.1}% 
+\contentsline {subsection}{\numberline {2.2.2}Visual - physical conflict}{8}{subsection.2.2.2}% 
+\contentsline {subsection}{\numberline {2.2.3}Feedback design}{8}{subsection.2.2.3}% 
+\contentsline {subsection}{\numberline {2.2.4}Picking and selection process}{8}{subsection.2.2.4}% 
+\contentsline {subsection}{\numberline {2.2.5}Grouped scans}{9}{subsection.2.2.5}% 
+\contentsline {subsection}{\numberline {2.2.6}Scan positioning}{10}{subsection.2.2.6}% 
+\contentsline {subsection}{\numberline {2.2.7}Additional application concepts}{11}{subsection.2.2.7}% 
+\contentsline {section}{\numberline {2.3}eine Grafik}{11}{section.2.3}% 
+\contentsline {subsection}{\numberline {2.3.1}Etwas Mathe}{11}{subsection.2.3.1}% 
+\contentsline {subsubsection}{\numberline {2.3.1.1}Verweise auf Literatur}{11}{subsubsection.2.3.1.1}% 
+\contentsline {paragraph}{\nonumberline etwas quelltext}{11}{lstnumber.-2.5}% 
+\contentsline {chapter}{\nonumberline Bibliography}{14}{chapter*.5}% 

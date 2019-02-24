@@ -131,8 +131,120 @@ To avoid large overhead due to the creation of randomized numbers the function u
 
 
 
+\chapter{Interactive VR-Concepts}
 
-Below is not part of this work. This are just some tests with the format. dont read it
+\section{The virtual environment}
+
+The virtual environment is defined as the virtual entity that sourrounds the user of a VR technology during the time he is using an HMD. Different to augmented reality which adds an additional layer/interface to the existing reality, letting the user see his natural envirnmont, VR completly sourrounds the user and the actual environment is not visible anymore. What the user can see and percept is solely depended from the created virtual world\cite{Milgram1995}.
+
+This environment should provide orientation in the virtual room as well as interfaces to work in it. The virtual environment is not limited but moving in it is not as easy, as natural movement is restrained to the maximum trackable area of the used VR equipment. 
+
+\subsection{The virtual workspace}
+
+In order to provide the user an appropriate workspace in VR, a virtual room has been designed. The maximum recommended trackable space for the virtual room using the Vive System is a 3.5 meters x3.5 meters quadratic area.
+%[https://www.vive.com/us/support/vive/category_howto/what-is-the-recommended-space-for-play-area.html].
+To assemble the point clouds efficiently the user has to gather the components and place them on an area. In order to support the users a virtual table has been designed. It is placed in the middle of the room with exact 1m distance to the rooms walls. The resulting size of 1.5x1.5 meters is sufficient for most scans of objects used in this thesis. For a list of used scans and their size see [appendix link]
+To avoid cyber sickness or claustrophobic events, the room has only 1 wall going towards the ceiling. The other 3 sides of the virtual room have smaller walls of about 1 meter height. They allow sight to the applications background graphic. Its task is to emulate more space than there is, to avoid the user feeling trapped in a small 3.5m 3.5m room. The small walls should work as a fence signalling the end of the trackable area. The resulting room can be seen in figure xxx in a third perspective view [insert virtual room picture]
+ 
+\subsection{Scaling}
+
+Greater objects may not fit in the room at all and need to be scaled to fit. In order to establish a norm, scans scaled greater than the table, are scaled down to fit the table. On the other hand too small scans are scaled upwards to reach a minimum size of 0.5 meters. The scaling function is immediately called after the loading function is completed.
+
+\section{User centred Design for VR}
+
+When building an VR based application, traditional 2D user interface design cannot be simply adapted to 3D.(BELEG!)
+Using Popups or mouse emulation projected onto the view frustrum of the user constraints interaction to a 2-Dimensional experience which is rather inefficient, compared to the possibilities VR could provide.
+To include VR Technology to the project, especially the cgv-Framework, new user interaction methods have to be provided and tested. Since the user is the active part of the application, controlling the actions and main methods of the scan alignment process, user centred design had to be chosen. 
+Human centred design processes for interactive systems, ISO 13407 (1999), states: 
+\begin{quote}
+"Human-centred design is an approach to interactive system development that focuses specifically on making systems usable."
+\end{quote}
+%https://www.w3.org/WAI/redesign/ucd
+There are many aspects of UCD, the following chapters will focus on the definition and examples used in this thesis corresponding application, showing their usage and further features.
+
+\subsection{Constraints and Affordances}
+
+Affordances describe the relationship between an abstract object or goal a user can achieve with the given actions he has\cite{Jerald2015}.
+To improve interaction design it is necessary that these affordances are appropriate and the given actions as easy doable\cite{Jerald2015}.
+In our application an affordance would be the relation between moving a scan that has been picked by moving the tracked motion controller. 
+
+Constraints on the other hand are limitations of the given actions a user has. This limitations may be necessary to not confuse the user or to simplify the usage of given methods. A user may move a scan by fault out of the trackable area or below the ground. By adding a simple collision detection that prevents the user from moving scans out of these limitations moving scans is less prone to errors. This would be a constraint to the action of moving the scan with the tracked motion controller. In the application moving scans below zero level is not possible, the scans bounding box is, moved tracked and evaluated. If an action would position any transformed corner point of the box, the translation is stopped and the corresponding controller receives a signal to vibrate. This indicates a violation of physical constraints to the user, preventing him from achieving an unwanted program state with scans hidden below zero ground level. These scans would be invisible.
+
+\subsection{Visual - physical conflict}
+
+By creating constraints to moving objects out of a given space, a user may experience a so called visual-physical conflict. The hand moving the object may go through an area but the application does not apply the physical appropriate result\cite{Jerald2015}.
+To avoid or at least lower the impact of this conflict user-feedback can be used to prevent the user from provoking these conflicts by accident, like in the vibrating controller described in the previous chapter.
+
+\subsection{Feedback design}
+
+Feedback is an essential user experience, which should result in information gain about the result or status of a task or object the user interacted with\cite{Jerald}.
+A use case in our program would be the switching of colours of a scan when its selected or not. A global selection colour (Bright Red) indicates that this object is selected and will be reference point for further actions. Since scan alignment needs at least 2 scans to be practical the application has a 2 step selection:
+Selecting the first scan changes its colour to bright red. But when the next scan is selected the first one changes its colour to a less brighter red signalling it is the secondary pick. Applying the alignment now starts an ICP which moves the second picked scan (the one that is now active) toward the first one.
+
+\subsection{Picking and selection process}
+
+Working in VR allows the user to reposition scan components as he wishes to every spot. To align them they need to get close together but if they start already close together they do not look ordered and users tend to split them first, to see the individual scans at least before putting them back together. To solve this problem, all scan components start in a line at a fixed height of about 2 meters at one side of the virtual room. Therefore the user can examine the scans separate.
+To pick a scan naturally the user could just walk to the side of the room and pick them up there. This would force one to repeatedly walk across the virtual room to the one wall and back to the table in order to assemble the scan by picking the components. To increase the efficiency and to decrease the effort to reach the scans, the tool has a build in drag function and a corresponding ranged pick function. This function works as a so called "extender grab"\cite{Jerald2015} %[JJ indirekt, Mine at al]
+and allows the user via box ray intersection to grab a scan which is out of his personal space.
+The hand remote "shoots" a ray from its front direction which now is tested in a Bounding box ray intersection function. If it intersects a component this component is picked. The user now can drag this component along the ray of the remote towards himself or even away. The component is mapped to the hand remote and performs any translation and rotation the remote does too, but never changes in the remotes coordinate system (distance is preserved as long as the user does not change it manually).
+If there is more than one component in a row that are intersected the one nearest to the user is chosen. 
+
+\subsection{Grouped scans}
+
+During the alignment the user may find the correct rotation and translation to align to scans. To save this but also be able to manipulate the scans rotation and translation without destroying the alignment, the user group scans. These groups now work as one scan with a shared Bounding box and shared translation and rotation and colour. If the user tries to pick the scan they both are selected and if he starts an ICP with the selected group and another group, both scans points are used.
+This may come unhandy when the scans are grouped incorrectly and now need to be separated again. To solve this an extra function was implemented. This function splits a group by translating them towards the averaged normal directions of their individual points.
+INSERT PICTURE
+By using the cross product of their averaged normalized normal vector and a dynamic vector which is generated out of the amount of the amount of components the group has.
+This is achieved by dividing a circle by the number of scans. The resulting angle is used in a rotation matrix around the z axis. By multiplying the matrix with the (1,0,0) vector x times normalized directions are derived.
+To avoid the possibility that bigger scans can overlap even after the split the minimal distance needed to translate the scans without overlapping is calculated using 2 restrictions:
+\begin{enumerate}
+\item The maximal Bounding box diagonal is equal to the diameter of a circle around the whole component. To avoid overlapping the point to point distance between the middle points of their bounding boxes has to be at least bigger than the maximal Bounding box Length of the biggest Bounding box
+\item The 3 points: averaged middle point of the whole group and the translated Bounding Box middle points of 2 of the scans form a nearly icosceles triangle.
+\end{enumerate}
+Therefore the minimal translation distance equals (gleichschenkliges dreieck formel).
+The application uses a factor of 1.1 of this minimal distance to avoid errors due to the fact that the computer works with floats and doubles which are not always precise and that there may be a distance between the averaged middle point of the group and the middle point of the Bounding Boxes of the scans. This is especially the case if the scans contains outliers.
+
+After this splitting translation was executed, the user now can chose a single component out of the group and separate it. The remaining group turns back to its initial state, the separated scan is lifted above the group.
+
+\subsection{Scan positioning}
+
+When loading a scan into the application there are several problems that occur:
+\begin{enumerate}
+\item Where should the initial position be when there are no information available?
+\item What if the available information are invalid e.g. under the z=0 level?
+\item What if the user wants to reset his actions because there are too many errors and he needs to start again?
+\item How should positioning be executed without confusing the user with instant teleportation of the components
+\end{enumerate}
+To solve this problem several functions are introduced to reposition components in different ways.
+
+
+ The reset function
+
+This function works as a simple reset. The user forces the components to all disasemble and reposition onto the default wall even if their loading position was somewhere other than default. This function is a hard reset even deleting colour and group information.
+
+The position above table function
+
+This function is a repositioning function to reposition a picked group to the middle table in the lowest height available. This height is determined by the lowest corner z-coordinate of the lowest bounding box of the group. Additionally the groups averaged middle point is now in the middle of the table, which is by default the middle of the room.
+
+The loading functions
+
+These special functions are not directly called by the user. They are instead called whenever the user decides to change the workspace by loading a new project or directory loading. A newly created component always causes the program to initialize its transformations unless they have a flag set that prevents the program from overwriting the transformations. These flags are used in project files to signalize that this is a component the user has already worked with and this should not be repositioned.
+
+The reposition execution animation
+
+To avoid instant teleportation, every repositioning that is not handled by directly grabbing a component thus attaching it to the hand controller, is instead animated as a linear blend between the original translation position and the target translation position. Additionally a second animation executes the rotation (if there is one) at the same time.
+These linear blend is executed on colours as well, making hard colour switches only available for blinking animations or the picking event. This is especially important to signalize that blinking colours are indicating that the user has to confirm an action. Additionally the user can see what he caused with his actions instead of a rapid state change of the program. When several translations are executed by one action it could be irritating with no fluent transition to the new state.(AUSDRUCK)
+
+\subsection{Additional application concepts}
+
+Some features of computer programs have evolved over the time and it is common to include them to all applications because of their general purpose. For example the possibility to restore the program state before the last action is a well known feature and commonly expected to be in every program. (FIND QUOTE)
+This feature is implemented by a stack which tracks all program states since the last project loading was called. The inverse function, restoring a state which was after the actual state but has been falsely reversed, is implemented too.(AUSDRUCK!)
+
+
+10 usability report
+
+- Get users
+- Get their feedback 
 
 \section{eine Grafik}
 \begin{figure}[htbp]

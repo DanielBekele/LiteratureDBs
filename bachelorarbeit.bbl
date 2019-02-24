@@ -1,0 +1,60 @@
+\begin{thebibliography}{10}
+
+\bibitem{bentley1975}
+Jon~Louis Bentley.
+\newblock Multidimensional binary search trees used for associative searching.
+\newblock {\em Commun. ACM}, 18(9):509--517, September 1975.
+
+\bibitem{Chao}
+Chen Chao and Ioannis Chao.
+\newblock Semi-automatic range to range registration: A feature-based method.
+\newblock In {\em Fifth International Conference on 3-D Digital Imaging and
+  Modeling}. {IEEE}.
+
+\bibitem{Garcia2008}
+Vincent Garcia, Eric Debreuve, and Michel Barlaud.
+\newblock Fast k nearest neighbor search using {GPU}.
+\newblock In {\em 2008 {IEEE} Computer Society Conference on Computer Vision
+  and Pattern Recognition Workshops}. {IEEE}, jun 2008.
+
+\bibitem{Jerald2015}
+Jason Jerald.
+\newblock {\em The VR Book}.
+\newblock Association for Computing Machinery and Morgan \& Claypool
+  Publishers, 2015.
+
+\bibitem{Ji2017}
+Shijun Ji, Yongcong Ren, Zhao Ji, Xiaolong Liu, and Gao Hong.
+\newblock An improved method for registration of point cloud.
+\newblock {\em Optik}, 140:451--458, jul 2017.
+
+\bibitem{Milgram1995}
+Paul Milgram, Haruo Takemura, Akira Utsumi, and Fumio Kishino.
+\newblock Augmented reality: a class of displays on the reality-virtuality
+  continuum.
+\newblock In Hari Das, editor, {\em Telemanipulator and Telepresence
+  Technologies}. {SPIE}, dec 1995.
+
+\bibitem{Nuchter2007}
+Andreas Nuchter, Kai Lingemann, and Joachim Hertzberg.
+\newblock Cached k-d tree search for {ICP} algorithms.
+\newblock In {\em Sixth International Conference on 3-D Digital Imaging and
+  Modeling (3DIM 2007)}. {IEEE}, aug 2007.
+
+\bibitem{Besl92}
+Neil D.~McKay Paul J.~Besl.
+\newblock Method for registration of 3-d shapes, 1992.
+
+\bibitem{Rusinkiewicza}
+S.~Rusinkiewicz and M.~Levoy.
+\newblock Efficient variants of the {ICP} algorithm.
+\newblock In {\em Proceedings Third International Conference on 3-D Digital
+  Imaging and Modeling}. {IEEE} Comput. Soc, 2001.
+
+\bibitem{salvi2007}
+Joaquim Salvi, Carles Matabosch, David Fofi, and Josep Forest.
+\newblock A review of recent range image registration methods with accuracy
+  evaluation.
+\newblock {\em Image and Vision Computing}, 25(5):578--596, may 2007.
+
+\end{thebibliography}

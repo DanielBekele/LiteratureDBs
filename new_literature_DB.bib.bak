@@ -68,7 +68,7 @@
 @InProceedings{Chao,
   author    = {Chen Chao and Ioannis Chao},
   title     = {Semi-Automatic Range to Range Registration: A Feature-Based Method},
-  booktitle = {Fifth International Conference on 3-D Digital Imaging and Modeling (3DIM{\textquotesingle}05)},
+  booktitle = {Fifth International Conference on 3-D Digital Imaging and Modeling},
   publisher = {{IEEE}},
   doi       = {10.1109/3dim.2005.72},
   file      = {:01443253.pdf:PDF},
@@ -99,6 +99,18 @@
   doi       = {10.1016/j.ijleo.2017.01.041},
   file      = {:1-s2.0-S0030402617300517-main.pdf:PDF},
   publisher = {Elsevier {BV}},
+}
+
+@InProceedings{Milgram1995,
+  author    = {Paul Milgram and Haruo Takemura and Akira Utsumi and Fumio Kishino},
+  title     = {Augmented reality: a class of displays on the reality-virtuality continuum},
+  booktitle = {Telemanipulator and Telepresence Technologies},
+  year      = {1995},
+  editor    = {Hari Das},
+  month     = {dec},
+  publisher = {{SPIE}},
+  doi       = {10.1117/12.197321},
+  file      = {:282.pdf:PDF},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
