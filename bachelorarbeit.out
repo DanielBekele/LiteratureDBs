@@ -1,37 +1,38 @@
 \BOOKMARK [1][-]{section.0.1}{0.1 Motivation and Goals:}{}% 1
 \BOOKMARK [1][-]{section.0.2}{0.2 Tasks:}{}% 2
 \BOOKMARK [1][-]{section.0.3}{0.3 Optional Tasks:}{}% 3
-\BOOKMARK [0][-]{chapter.1}{1 3D scan registration}{}% 4
-\BOOKMARK [1][-]{section.1.1}{1.1 Introduction to registration algorithms}{chapter.1}% 5
-\BOOKMARK [2][-]{subsection.1.1.1}{1.1.1 Correspondences}{section.1.1}% 6
-\BOOKMARK [2][-]{subsection.1.1.2}{1.1.2 KD-Trees}{section.1.1}% 7
-\BOOKMARK [2][-]{subsection.1.1.3}{1.1.3 The iterative closest point algorithm}{section.1.1}% 8
-\BOOKMARK [2][-]{subsection.1.1.4}{1.1.4 Subsampling}{section.1.1}% 9
-\BOOKMARK [1][-]{section.1.2}{1.2 Analization and tests of used methods}{chapter.1}% 10
-\BOOKMARK [2][-]{subsection.1.2.1}{1.2.1 Test Setup}{section.1.2}% 11
-\BOOKMARK [2][-]{subsection.1.2.2}{1.2.2 Single point clouds registration accuracy}{section.1.2}% 12
-\BOOKMARK [2][-]{subsection.1.2.3}{1.2.3 Single point clouds registration runtimes}{section.1.2}% 13
-\BOOKMARK [2][-]{subsection.1.2.4}{1.2.4 Multiple point clouds registration accuracy}{section.1.2}% 14
-\BOOKMARK [2][-]{subsection.1.2.5}{1.2.5 Multiple point clouds registration runtimes}{section.1.2}% 15
-\BOOKMARK [0][-]{chapter.2}{2 Interactive VR-Concepts}{}% 16
-\BOOKMARK [1][-]{section.2.1}{2.1 The virtual environment}{chapter.2}% 17
-\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 The virtual workspace}{section.2.1}% 18
-\BOOKMARK [2][-]{subsection.2.1.2}{2.1.2 Scaling}{section.2.1}% 19
-\BOOKMARK [1][-]{section.2.2}{2.2 User centred Design for VR}{chapter.2}% 20
-\BOOKMARK [2][-]{subsection.2.2.1}{2.2.1 Constraints and Affordances}{section.2.2}% 21
-\BOOKMARK [2][-]{subsection.2.2.2}{2.2.2 Visual - physical conflict}{section.2.2}% 22
-\BOOKMARK [2][-]{subsection.2.2.3}{2.2.3 Feedback design}{section.2.2}% 23
-\BOOKMARK [2][-]{subsection.2.2.4}{2.2.4 Picking and selection process}{section.2.2}% 24
-\BOOKMARK [2][-]{subsection.2.2.5}{2.2.5 Grouped scans}{section.2.2}% 25
-\BOOKMARK [2][-]{subsection.2.2.6}{2.2.6 Scan positioning}{section.2.2}% 26
-\BOOKMARK [2][-]{subsection.2.2.7}{2.2.7 Additional application concepts}{section.2.2}% 27
-\BOOKMARK [0][-]{chapter.3}{3 Interactive VR-user study}{}% 28
-\BOOKMARK [1][-]{section.3.1}{3.1 Test setup}{chapter.3}% 29
-\BOOKMARK [2][-]{subsection.3.1.1}{3.1.1 Equipment}{section.3.1}% 30
-\BOOKMARK [2][-]{subsection.3.1.2}{3.1.2 Guidance}{section.3.1}% 31
-\BOOKMARK [1][-]{section.3.2}{3.2 Test results}{chapter.3}% 32
-\BOOKMARK [0][-]{chapter.4}{4 Evaluation}{}% 33
-\BOOKMARK [0][-]{chapter.5}{5 Problems}{}% 34
-\BOOKMARK [1][-]{section.5.1}{5.1 Implementation problems}{chapter.5}% 35
-\BOOKMARK [1][-]{section.5.2}{5.2 Hardware problems}{chapter.5}% 36
-\BOOKMARK [0][-]{chapter*.4}{Bibliography}{}% 37
+\BOOKMARK [0][-]{chapter.1}{1 Introduction}{}% 4
+\BOOKMARK [0][-]{chapter.2}{2 3D scan registration}{}% 5
+\BOOKMARK [1][-]{section.2.1}{2.1 Introduction to registration algorithms}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.1.1}{2.1.1 Correspondences}{section.2.1}% 7
+\BOOKMARK [2][-]{subsection.2.1.2}{2.1.2 KD-Trees}{section.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.1.3}{2.1.3 The iterative closest point algorithm}{section.2.1}% 9
+\BOOKMARK [2][-]{subsection.2.1.4}{2.1.4 Subsampling}{section.2.1}% 10
+\BOOKMARK [1][-]{section.2.2}{2.2 Analization and tests of used methods}{chapter.2}% 11
+\BOOKMARK [0][-]{chapter.3}{3 Interactive VR-Concepts}{}% 12
+\BOOKMARK [1][-]{section.3.1}{3.1 The virtual environment}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.1.1}{3.1.1 The virtual workspace}{section.3.1}% 14
+\BOOKMARK [2][-]{subsection.3.1.2}{3.1.2 Scaling}{section.3.1}% 15
+\BOOKMARK [1][-]{section.3.2}{3.2 User centred Design for VR}{chapter.3}% 16
+\BOOKMARK [2][-]{subsection.3.2.1}{3.2.1 Constraints and Affordances}{section.3.2}% 17
+\BOOKMARK [2][-]{subsection.3.2.2}{3.2.2 Visual - physical conflict}{section.3.2}% 18
+\BOOKMARK [2][-]{subsection.3.2.3}{3.2.3 Feedback design}{section.3.2}% 19
+\BOOKMARK [2][-]{subsection.3.2.4}{3.2.4 Picking}{section.3.2}% 20
+\BOOKMARK [2][-]{subsection.3.2.5}{3.2.5 Grouped scans}{section.3.2}% 21
+\BOOKMARK [2][-]{subsection.3.2.6}{3.2.6 Scan positioning}{section.3.2}% 22
+\BOOKMARK [3][-]{subsubsection.3.2.6.1}{3.2.6.1 The reset function}{subsection.3.2.6}% 23
+\BOOKMARK [3][-]{subsubsection.3.2.6.2}{3.2.6.2 The position above table function}{subsection.3.2.6}% 24
+\BOOKMARK [3][-]{subsubsection.3.2.6.3}{3.2.6.3 The loading functions}{subsection.3.2.6}% 25
+\BOOKMARK [3][-]{subsubsection.3.2.6.4}{3.2.6.4 The reposition execution animation}{subsection.3.2.6}% 26
+\BOOKMARK [3][-]{subsubsection.3.2.6.5}{3.2.6.5 The dragging fucntion}{subsection.3.2.6}% 27
+\BOOKMARK [2][-]{subsection.3.2.7}{3.2.7 Additional application concepts}{section.3.2}% 28
+\BOOKMARK [0][-]{chapter.4}{4 Interactive VR-user study}{}% 29
+\BOOKMARK [1][-]{section.4.1}{4.1 Test setup}{chapter.4}% 30
+\BOOKMARK [2][-]{subsection.4.1.1}{4.1.1 Equipment}{section.4.1}% 31
+\BOOKMARK [2][-]{subsection.4.1.2}{4.1.2 Guidance}{section.4.1}% 32
+\BOOKMARK [1][-]{section.4.2}{4.2 Test results}{chapter.4}% 33
+\BOOKMARK [0][-]{chapter.5}{5 Evaluation}{}% 34
+\BOOKMARK [0][-]{chapter.6}{6 Problems}{}% 35
+\BOOKMARK [1][-]{section.6.1}{6.1 Implementation problems}{chapter.6}% 36
+\BOOKMARK [1][-]{section.6.2}{6.2 Hardware problems}{chapter.6}% 37
+\BOOKMARK [0][-]{chapter*.4}{Bibliography}{}% 38

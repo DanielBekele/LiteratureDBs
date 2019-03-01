@@ -113,4 +113,28 @@
   file      = {:282.pdf:PDF},
 }
 
+@Book{Jerald2015,
+  title     = {The VR Book},
+  publisher = {Association for Computing Machinery and Morgan \& Claypool Publishers},
+  year      = {2015},
+  author    = {Jerald, Jason},
+  date      = {2015-09-01},
+  ean       = {9781970001143},
+  pagetotal = {523},
+  url       = {https://www.ebook.de/de/product/25254321/jason_jerald_the_vr_book.html},
+}
+
+@Article{,
+  author  = {Uwe Pietrzyk, Karl Herholz, Gereon Fink, Andreas Jacobs, Rüdiger Mielke, Ina Slansky, Michael Würker, Wolf-Dieter Heiss},
+  title   = {An Interactive Technique for Three-Dimensional Image Registration: Validation for PET, SPECT, MRI and CT Brain Studies},
+  journal = {The Joumal of Nuclear Medicine},
+  year    = {1994},
+  volume  = {35},
+  number  = {12},
+  month   = dec,
+  doi     = {10.1.1.119.667},
+  file    = {:10.1.1.119.667.pdf:PDF},
+  url     = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.119.667&rep=rep1&type=pdf},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

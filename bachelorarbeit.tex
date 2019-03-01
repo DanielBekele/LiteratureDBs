@@ -17,7 +17,7 @@
 \bibfiles{new_literature_DB}
 \problem{
 \section{Motivation and Goals:}
-When 3D scanning real objects several scans from different views need to be acquired and combined. For high quality reconstruction of a surface model, the relative 3D scanner poses of the different views need to be determined accurately before combining the points from the individual 3D scans. This process is also called registration. The registra-tion problem can be split into coarse and fine registration. In coarse registration a regis-tration with low accuracy is determined which is further refinded by a fine registration, for which fully automatic methods work efficiently. The goal of the thesis is to study the coarse registration problem in an interactive setting where a user adjusts the relative poses in a VR environment and to compare its efficiency with a WIMP based interface, e.g. the one implemented in MeshLab [1].
+When 3D scanning real objects several scans from different views need to be acquired and combined. For high quality reconstruction of a surface model, the relative 3D scanner poses of the different views need to be determined accurately before combining the points from the individual 3D scans. This process is also called registration. The registra-tion problem can be split into coarse and fine registration. In coarse registration a regis-tration with low accuracy is determined which is further refinded by a fine registration, for which fully automatic methods work efficiently. The goal of the thesis is to study the coarse registration problem in an interactive setting where a user adjusts the relative poses in a VR environment and to compare its efficiency with a WIMP based interface, e.g. the one implemented in MeshLab [].
 \section{Tasks:}
 \begin{itemize}
 \item Literature research on registration approach with a focus on interactive and semi-automatic approaches
@@ -25,7 +25,7 @@ When 3D scanning real objects several scans from different views need to be acqu
 \item Design of a VR environment for the interactive registration realizing the concept of a workbench and a natural alignment of the 3D scan collection that needs to be registered in a way the selection of individual scans is efficient.
 \item Implementation of VR-based picking and positioning strategy of individual point clouds based on the interaction capabilities of a VIVE VR set.
 \item Development and implementation of a strategy to guide the user through the process of registering all scans of a dataset
-\item Integration of an automatic fine registration algorithm like SparseICP [2].
+\item Integration of an automatic fine registration algorithm like SparseICP [].
 \item Evaluation of the developed methods in a qualitative user study based on a ground truth dataset provided by the Chair of Computer Graphics and Visualization.
 \end{itemize}
 \section{Optional Tasks:}
@@ -39,12 +39,20 @@ When 3D scanning real objects several scans from different views need to be acqu
 Zustimmungen der Copyright-Besitzer angeben bzw. die in Web Press
 Rooms angegebenen generellen Konditionen seiner Text- und
 Bild"ubernahmen zitieren.}
-\acknowledgments{Die Danksagung...}
-\abstracten{abstract text english}
+\acknowledgments{}
+\abstracten{}
 
 \begin{document}
+\chapter{Introduction}
+In the past 30 Years a rapid development in the field of  virtual and augmented reality took place. The technology itself was not new and invented even earlier, but less affordant for users at home. Due to the lack of computational power of home pcs early systems for VR were not available for most people. With the drop of hardware prices and a rising gaming industry things changed soon and VR reality is now available for early adopters. With the rise of cheaper hardware and the improvments of the last few years it is soon to be expected that VR will gain access to most people.
+
+Virtual reality has the possibility to become a mainstream medium, but its purpose is not restricted to entertainment only. Its capability to produce a replica of normally hard accesseble objects and even interia of humans enables it to provide a perspective view on things that are not seeable otherwise. Even objects that are nonexisting in the real virtual at the given moment can be reprocued and examined with this technology. This property is espiacially usefull for real time CAD applications. In near future there is the chance that designing 3D objects will take place in Virtual Reality rather than on 2D screens that need a projection of the 3D virtual world on a plane.
+
+In order to successfully apply such construction techniques, some basic problems need to be solved first. One of these includes the 3D registration problem, commonly known in the field of computer graphics, as well as robotics, medicine and in CAD Applications.
+This thesis goal is to conduct research in previous attempts for solutions of this problems which include user interaction, as well as to develop an interactive 3D registration programm. Finally a user study should provide more usefull insights on the interactive registration process in virtual reality.
+
 \chapter{3D scan registration}
-The registration problem is defined as finding the matching transformation for one or more sets of data to match to a target set of data.(BELEG)
+The registration problem is defined as finding the matching transformation for one or more sets of data to match to a target set of data.%BELEG
 This task can be splitted into the coarse and fine registration.
 In order to work properly, or to achieve faster and better results, most registration algorithms require a coarse registration that is done before the actual algorithm starts. 
 \begin{quote}
@@ -52,13 +60,21 @@ In order to work properly, or to achieve faster and better results, most registr
 guess is required because some methods have convergence
 problems due to the presence of local minima."\cite{salvi2007}
 \end{quote}
-Fully automated algorithms for the registration problem mostly need 2 different algorithm for coarse and fine alignment. As proposed in a paper by Ji \cite{Ji2017} using an improved method of the ICP for fine alignment and a genetic algorithm for coarse alignment. Other than that Chao uses a semi automatic approach feature based methods. To reduce rotation errors the user decides manually the correct rotation \cite{Chao}
+Fully automated algorithms for the registration problem mostly need 2 different algorithms for coarse and fine alignment. As an example shown in a paper by Ji \cite{Ji2017} an improved method of the ICP for fine alignment and a genetic algorithm for coarse alignment is used. When examining the research results it is obvious that the focus of current researches lies on fully automated approaches. In difference to my thesis user interaction for registration is kept to a minimum, mostly just used to manually check for registration errors due to local minimas. This is the case in a semi automatic of Chao, who used feature based methods for registration and only to reduce rotation errors the user is involved by chosing the correct rotation.\cite{Chao}
+
+In 1994 the 3D image registration for Validation of several medical scans was proposed along with an interactive coregstration algorithm by an article of Uwe Pietrzy et a\cite{Pietrzyk1994}. The main goal was to align scans of brains with a reference scan in order to detect anomalies, which may indicate a desease of the patient. The corregstration is mainly driven by user interaction and achieved accurate results that put up to the fully automated techniques of that time. At the same time the algorithm was far less restricted than the fully automated techniques, because of user interaction. Figure 2.1 shows the workflow of the application developed by them.
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width= \linewidth]{flow_chart_uwe_p.png}
+	\caption{The workflow of the application\cite{Pietrzyk1994}}
+	\label{fig:workflow}
+\end{figure}
 
 The method proposed by this thesis is a mixture of a manually coarse alignment and simple ICP version that should be capable of running in real time, making it a subject of interest for gaming applictations as well as real time CAD applications.
 The coarse registration problem was often solved manually by used a WIMP[explain WIMP] based interface like in Chaos paper \cite{Chao}. To enhance the process further and in order to give the user more insight and controll over his 3D models, a virtual environment is used in our application instead.
 
 The main goal of this thesis is to investigate if this coarse alignment problem can be solved more efficiently by introducing the user to a virtual environment capable of fully displaying the point clouds in all three dimensions, instead of using a WIMP based interface.
-The fine registration is then automatically performed by an ICP, in the best case this should execute real time with an animation.
+The fine registration could then be added with a proper algorithm additionally, in the best case this should execute real time with an animation.
 
 \section{Introduction to registration algorithms}
 
@@ -76,7 +92,7 @@ To find corresponding points between 2 sets of points a fast and efficient metho
 The k-nearest neighbour search (knn-search) is commonly used for such problems, as its includes the distances between the nearest points and should deliver good results, given the scans are near together and approximately have the correct rotation. The circumstances of the application fullfill this requirements, since it needs the user to coarse align the scans before the automated fine alignment.
 The knn-search does calculate, as its name implies, the distance to the nearest points. To estimate the nearest neighbours, distances between the individual points need to be calculated and then sorted to find the closest points.
 
-Given this situation a simple knn-search with the brute Force method fails. The method would calculate all distances between all points, the resulting complexety of  O(mnd)\cite{Garcia2008}, with m as nubmer of all points from point cloud 1 and n with the number of all points from point cloud 2. d is the number of nearest points that are obtained and stored. This does not meet the requirement of the application to work in real time with point clouds with a higher number of points.
+Given this situation a simple knn-search with the brute Force method fails. The method would calculate all distances between all points, the resulting complexety of  \textit{O(mnd)} \cite{Garcia2008}, with m as nubmer of all points from point cloud 1 and n with the number of all points from the second point cloud. d is the number of nearest points that are obtained and stored. This does not meet the requirement of the application to work in real time with point clouds with a higher number of points.
 To enhance the efficency of this method many different acceleration data structures have been introduced. The one used in the actual implementation of the application for this thesis is the so called KD-tree.
 
 \subsection{KD-Trees}
@@ -85,10 +101,11 @@ To enhance the efficency of this method many different acceleration data structu
 "k-d trees are a generalization of binary search trees."\cite{Nuchter2007}
 \end{quote}
 In theory this means that all points are represented by a binary tree structure. The root node contains the whole point cloud. The variable k defines the dimensions which is 3 in our example, hence we are working in 3D space when aligning scans. This variable can be higher if e.g. the colours of scans are as additional information availabe.
-Building such a tree has an average rutime in the complexity of O(log n), to optimize it O(n log n)\cite{bentley1975}
+Building such a tree has an average rutime in the complexity of \mbox{\textit{O(log n)}, to optimize it \textit{O(n log n)}\cite{bentley1975}}.
+
 Their main advantage is their runtime for knn-querys: 
 \begin{quote}
-"for nearest neighbor queries [empirically observed average running time of O(log n).]" \cite{bentley1975}
+"for nearest neighbor queries [empirically observed average running time of \textit{O(log n)}.]" \cite{bentley1975}
 \end{quote}
 Using KD-trees for a knn-query results in a much better performance since building a kd tree and using it costs less than using brute force method. Furthermore through parallelization the actual runtime can further be reduced. The code excerpt below shows a snippet which uses a KD-tree for a knn-query executing parallel. This implementation is used during the execution of the fine alignment of the version of the ICP this application uses. The code is taken from the stanford university.
 
@@ -116,40 +133,23 @@ In this case the Transformation is a translation and a rotation matrix that when
 The initial guess is provided by the user with a coarse registration. The ICP then makes use of step 2-4 (see top) always iteratively converging to a local optimum.\cite{Besl92}
 The ICP algorithm in the variant that was and is widely used in registration problems and was introduced 1992 by P.J. Besl and Neil D. McKay\cite{Besl92}. Over the years several optimization steps have been added to the ICP in order to boost the speed and efficency.
 
-The variants used by our program is the regular point to point variant using reiterative weighting.
-This method uses xxxxxxxx for more stable solutions. Due to problems with the integration of sparse ICP, which uses a more stable error metric the simpler and faster ICP variant has been chosen. This traidoff can lead to NAN or INF results when using the method.
- 
 Before starting the actual algorithm it has to be considered that the real time requirement can obviously not be fulfilled with larger point clouds as shown in measurements in table 1 [see table with times]. But aligning and grouping several point clouds to one and aligning this greater point cloud will sooner or later result in a large point cloud that has to be aligned. To still fulfill the real time requirement a subsampling method is needed.
 
 \subsection{Subsampling}
 
-The runtime tests as shown in the table show a significant drop rate in runtime when adding too much points. This is especially the case if the point number reach certain limits. We suspect this is the case when the needed storage for the kd trees which lays in O(n * m) [beleg not found] surpasses the computers cache.
-
+When aligning greater point clouds with more than 1000 Points with an automated registration algorithm, the runtime of these functions in the application do not meet the constraint of running in real time anymore. 
 To avoid this problem a subsampling method has been introduced, which uses randomized ranged subsampling. Every point cloud of the group of clouds that is aligned to the target group is counted. The resulting number is divided by the subsampling range. The range indicates that every xth point is sampled. The exact point is randomly chosen in between the ranges distance, counting upwards. The resulting subsampled point cloud is now used for the ICP algorithm, reducing the complexity of the actual task by the factor x.
 
 To avoid large overhead due to the creation of randomized numbers the function uses the default and efficient random Microsoft c++ library <random.h> and only array access with offsets. If the ICP is called again with the same point clouds, the application uses the already stored values, further increasing its efficiency.
 
+Several problems may occur with this method, if no feature extraction, detection of outliers and restriction of subsampling area is defined the accuracy can significantly be lower than without subsampling. Losing features by subsamling causes the algorithm to find less correspondencies, because there are less patterns left. The missing detection of outliers cause them to have greater impact to the resulting alignment, because their amount relative to the totality of points increases. The last point, the restriction of subsampling area is important, because if there are no restrictions, the subsampling method may eject overlapping points of the 2 scans, which are in fact the most important correspondencies for the algorithm. 
+
 \section{Analization and tests of used methods}
 
-In order to enhance the real time compability as well as the general accuracy of the used ICP methods, several test cases have been implemented. All tests rely on a given dataset from the chair of computergraphics(CHAIR), including a ground truth file. This file contains the correct rotations and translations to align the point clouds perfectly.
+In order to enhance the real time compability as well as the general accuracy of the used ICP methods, a public open source code library of the stanford university was used and integrated as header file. Unfortunately this library had a lot of issues with the underlying dependecies and was not perfectly compatible to the framework. As for the sparse ICP implementation results were nowhere near usable, the alignments were diverging instead of getting closer. The basic point to point method which used %which weigting?
+was more accurate. Unfortunately this method often failed to align scans due to finding local minima which were incorrect. The missing numerical stability included the possibility to produce INFINITE vectors or even NAN results.
 
- \subsection{Test Setup}
-
-The first test setup is a coarsed aligned state of a single pointcloud which will be then aligned to another single point cloud. The reached alignment will be then compared to the actual ground truth alignment and the error as well as the runtime will be measured for SICP as well as ICP. The afterwards used Kabsch algorithms runtime is measured too.
-
-The second test setup is the same single pointcloud which now is aligned to a group of already aligned point clouds. In this test setup subsampling plays an important role and the runtimes and accuracy between subsampled and unsubsampled alignments are compared.
-
-In the last test setup both starting parameters of the alignment algorithms are grouped and aligned point clouds. This test will as well compoare accuracy and runtime between subsampled and unsubsampled alignments.
-
-\subsection{Single point clouds  registration accuracy}
-
-...
-
-\subsection{Single point clouds registration runtimes}
-
-\subsection{Multiple point clouds registration accuracy}
-
-\subsection{Multiple point clouds registration runtimes}
+The real time requirement restrained the usage of more complex variants with refined error metrics due to the fact that the running time would increase signiflicantly. Final tests in the actual application with the vive showed that the calculation time increased as well due to the complexity of handling a complete framework which renders a 90Hz stereoscopic view for the vive and has to handle at the same time polled events of the technical devices such as pose events, button events and further more. As the usage of the ICP with more complex scans than the initial test set (the drill scan from the stanford 3D scan repo) completely failed to work in real time with subsampling and even failed to proper align without subsampling, the ICP has been cut out of the program.
 
 \chapter{Interactive VR-Concepts}
 
@@ -163,12 +163,12 @@ This environment should provide orientation in the virtual room as well as inter
 
 In order to provide the user an appropriate workspace in VR, a virtual room has been designed. The maximum recommended trackable space for the virtual room using the Vive System is a 3.5 meters x3.5 meters quadratic area.
 %[https://www.vive.com/us/support/vive/category_howto/what-is-the-recommended-space-for-play-area.html].
-To assemble the point clouds efficiently the user has to gather the components and place them on an area. In order to support the users a virtual table has been designed. It is placed in the middle of the room with exact 1m distance to the rooms walls. The resulting size of 1.5x1.5 meters is sufficient for most scans of objects used in this thesis. For a list of used scans and their size see [appendix link]
-To avoid cyber sickness or claustrophobic events, the room has only 1 wall going towards the ceiling. The other 3 sides of the virtual room have smaller walls of about 1 meter height. They allow sight to the applications background graphic. Its task is to emulate more space than there is, to avoid the user feeling trapped in a small 3.5m 3.5m room. The small walls should work as a fence signalling the end of the trackable area. The resulting room can be seen in figure xxx in a third perspective view [insert virtual room picture]
+To assemble the point clouds efficiently the user has to gather the components and place them on an area. In order to support the users a virtual table has been designed. It is placed in the middle of the room with exact 1m distance to the rooms walls. The resulting size of one meter radius is sufficient for most scans of objects used in this thesis. For a list of used scans and their size see [appendix link]
+To avoid cyber sickness or claustrophobic events, the room has only one wall going towards the ceiling. The other 3 sides of the virtual room have smaller fences of about one meter height. They allow sight to the applications background environment. Its task is to emulate more space than there is, to avoid the user feeling trapped in a small 3.5m 3.5m room. The small walls should work as a fence signalling the end of the trackable area. The resulting room can be seen in figure 3.1 in a third perspective view [insert virtual room picture]
  
 \subsection{Scaling}
 
-Greater objects may not fit in the room at all and need to be scaled to fit. In order to establish a norm, scans scaled greater than the table, are scaled down to fit the table. On the other hand too small scans are scaled upwards to reach a minimum size of 0.5 meters. The scaling function is immediately called after the loading function is completed.
+Greater objects may not fit in the room at all and need to be scaled to fit, on the other hand some are so small that the user may have problems to see their important features properly. To give the user the option to adjust his, a scaling function is bound to one of the controllers touchpad and can be used with the drag motion to scale the 3D scan. This has to be done before the actual alignment is done, since scaling is a non homogenus transformation which does not presevere distances between the individual components. The scaling function uses a uniform scale,% transforming the acutal point clouds.
 
 \section{User centred Design for VR}
 
@@ -201,12 +201,13 @@ Feedback is an essential user experience, which should result in information gai
 A use case in our program would be the switching of colours of a scan when its selected or not. A global selection colour (Bright Red) indicates that this object is selected and will be reference point for further actions. Since scan alignment needs at least 2 scans to be practical the application has a 2 step selection:
 Selecting the first scan changes its colour to bright red. But when the next scan is selected the first one changes its colour to a less brighter red signalling it is the secondary pick. Applying the alignment now starts an ICP which moves the second picked scan (the one that is now active) toward the first one.
 
-\subsection{Picking and selection process}
+\subsection{Picking}
 
 Working in VR allows the user to reposition scan components as he wishes to every spot. To align them they need to get close together but if they start already close together they do not look ordered and users tend to split them first, to see the individual scans at least before putting them back together. To solve this problem, all scan components start in a line at a fixed height of about 2 meters at one side of the virtual room. Therefore the user can examine the scans separate.
 To pick a scan naturally the user could just walk to the side of the room and pick them up there. This would force one to repeatedly walk across the virtual room to the one wall and back to the table in order to assemble the scan by picking the components. To increase the efficiency and to decrease the effort to reach the scans, the tool has a build in drag function and a corresponding ranged pick function. This function works as a so called "extender grab"\cite{Jerald2015} %[JJ indirekt, Mine at al]
 and allows the user via box ray intersection to grab a scan which is out of his personal space.
-The hand remote "shoots" a ray from its front direction which now is tested in a Bounding box ray intersection function. If it intersects a component this component is picked. The user now can drag this component along the ray of the remote towards himself or even away. The component is mapped to the hand remote and performs any translation and rotation the remote does too, but never changes in the remotes coordinate system (distance is preserved as long as the user does not change it manually).
+The hand remote "shoots" a ray from its front direction which now is tested in a Bounding box ray intersection function. If it intersects a component this component is picked.
+%Mathematical background?
 If there is more than one component in a row that are intersected the one nearest to the user is chosen. 
 
 \subsection{Grouped scans}
@@ -238,22 +239,26 @@ When loading a scan into the application there are several problems that occur:
 To solve this problem several functions are introduced to reposition components in different ways.
 
 
- The reset function
+\subsubsection{The reset function}
 
 This function works as a simple reset. The user forces the components to all disasemble and reposition onto the default wall even if their loading position was somewhere other than default. This function is a hard reset even deleting colour and group information.
 
-The position above table function
+\subsubsection{The position above table function}
 
 This function is a repositioning function to reposition a picked group to the middle table in the lowest height available. This height is determined by the lowest corner z-coordinate of the lowest bounding box of the group. Additionally the groups averaged middle point is now in the middle of the table, which is by default the middle of the room.
 
-The loading functions
+\subsubsection{The loading functions}
 
-These special functions are not directly called by the user. They are instead called whenever the user decides to change the workspace by loading a new project or directory loading. A newly created component always causes the program to initialize its transformations unless they have a flag set that prevents the program from overwriting the transformations. These flags are used in project files to signalize that this is a component the user has already worked with and this should not be repositioned.
+These special functions are not directly called by the user. They are instead called whenever the user decides to change the workspace by loading a new project or directory loading. A newly created component always causes the program to initialize its transformations unless they have a flag set that prevents the program from overwriting the transformations. These flags are used in project files to signalize that this is a component the user has already worked with and this should not be repositioned by loading. 
 
-The reposition execution animation
+\subsubsection{The reposition execution animation}
 
 To avoid instant teleportation, every repositioning that is not handled by directly grabbing a component thus attaching it to the hand controller, is instead animated as a linear blend between the original translation position and the target translation position. Additionally a second animation executes the rotation (if there is one) at the same time.
 These linear blend is executed on colours as well, making hard colour switches only available for blinking animations or the picking event. This is especially important to signalize that blinking colours are indicating that the user has to confirm an action. Additionally the user can see what he caused with his actions instead of a rapid state change of the program. When several translations are executed by one action it could be irritating with no fluent transition to the new state.(AUSDRUCK)
+
+\subsubsection{The dragging fucntion}
+
+One of the core functionalities for this application is the possibility for the user to directly "grab" a scan and align it by hand next to the target. In order to work this feature needs several helping functions. The picking method determines the selected scan. If the user holds the picking button, the selected scan is now bound to his controller by the controllers virtual pose. This pose is described as a matrix containing the origin point of the controller in world coordinates, as well as all 3 axes of the controllers coordinate system in world coordinates. By calculating the position of the picked group or component in the local coordinate system of the controller and storing this value dragging becomes possible. The local position is obtained by multiplying the local pose of the component (if it is a group all calculations need to be made componentwise seperately) to the inverted pose of the controller. As soon as the pose of the controller changes, the actual pose matrix is multiplied to the already stored local positions, resulting in a tranformation so that the pose of the gourp or scan in the controllers coordinate system remains equal. The actual result in world coordinates is a transformation as if the scan/group is bound to the controllers picking ray. Additionally the user can change the group/scans local pose towards the controllers z axis. This results in the scan/group coming nearer towards the controller, or further away. This action is triggerd by a scrolling movement on the touchpad. 
 
 \subsection{Additional application concepts}
 
