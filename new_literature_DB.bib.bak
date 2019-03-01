@@ -124,8 +124,8 @@
   url       = {https://www.ebook.de/de/product/25254321/jason_jerald_the_vr_book.html},
 }
 
-@Article{,
-  author  = {Uwe Pietrzyk, Karl Herholz, Gereon Fink, Andreas Jacobs, Rüdiger Mielke, Ina Slansky, Michael Würker, Wolf-Dieter Heiss},
+@Article{Pietrzyk1994,
+  author  = {Uwe Pietrzyk and Karl Herholz and Gereon Fink and Andreas Jacobs and Rüdiger Mielke and Ina Slansky and Michael Würker and Wolf-Dieter Heiss},
   title   = {An Interactive Technique for Three-Dimensional Image Registration: Validation for PET, SPECT, MRI and CT Brain Studies},
   journal = {The Joumal of Nuclear Medicine},
   year    = {1994},
@@ -135,6 +135,16 @@
   doi     = {10.1.1.119.667},
   file    = {:10.1.1.119.667.pdf:PDF},
   url     = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.119.667&rep=rep1&type=pdf},
+}
+
+@Misc{w3ucdISO,
+  title = {https://www.w3.org/WAI/redesign/ucd},
+  url   = {https://www.w3.org/WAI/redesign/ucd},
+}
+
+@Misc{vivehelp,
+  title = {https://www.vive.com/us/support/vive/category_howto/what-is-the-recommended-space-for-play-area.html},
+  url   = {[https://www.vive.com/us/support/vive/category_howto/what-is-the-recommended-space-for-play-area.html]},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}

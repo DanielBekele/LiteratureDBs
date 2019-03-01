@@ -43,6 +43,7 @@ Bild"ubernahmen zitieren.}
 \abstracten{}
 
 \begin{document}
+
 \chapter{Introduction}
 In the past 30 Years a rapid development in the field of  virtual and augmented reality took place. The technology itself was not new and invented even earlier, but less affordant for users at home. Due to the lack of computational power of home pcs early systems for VR were not available for most people. With the drop of hardware prices and a rising gaming industry things changed soon and VR reality is now available for early adopters. With the rise of cheaper hardware and the improvments of the last few years it is soon to be expected that VR will gain access to most people.
 
@@ -161,25 +162,41 @@ This environment should provide orientation in the virtual room as well as inter
 
 \subsection{The virtual workspace}
 
-In order to provide the user an appropriate workspace in VR, a virtual room has been designed. The maximum recommended trackable space for the virtual room using the Vive System is a 3.5 meters x3.5 meters quadratic area.
-%[https://www.vive.com/us/support/vive/category_howto/what-is-the-recommended-space-for-play-area.html].
+In order to provide the user an appropriate workspace in VR, a virtual room has been designed. The maximum recommended trackable space for the virtual room using the Vive System is a 3.5 meters x3.5 meters quadratic area.\cite{vivehelp}
 To assemble the point clouds efficiently the user has to gather the components and place them on an area. In order to support the users a virtual table has been designed. It is placed in the middle of the room with exact 1m distance to the rooms walls. The resulting size of one meter radius is sufficient for most scans of objects used in this thesis. For a list of used scans and their size see [appendix link]
 To avoid cyber sickness or claustrophobic events, the room has only one wall going towards the ceiling. The other 3 sides of the virtual room have smaller fences of about one meter height. They allow sight to the applications background environment. Its task is to emulate more space than there is, to avoid the user feeling trapped in a small 3.5m 3.5m room. The small walls should work as a fence signalling the end of the trackable area. The resulting room can be seen in figure 3.1 in a third perspective view [insert virtual room picture]
  
 \subsection{Scaling}
 
-Greater objects may not fit in the room at all and need to be scaled to fit, on the other hand some are so small that the user may have problems to see their important features properly. To give the user the option to adjust his, a scaling function is bound to one of the controllers touchpad and can be used with the drag motion to scale the 3D scan. This has to be done before the actual alignment is done, since scaling is a non homogenus transformation which does not presevere distances between the individual components. The scaling function uses a uniform scale,% transforming the acutal point clouds.
+Greater objects may not fit in the room at all and need to be scaled to fit, on the other hand some are so small that the user may have problems to see their important features properly. To give the user the option to adjust his, a scaling function is bound to one of the controllers touchpad and can be used with the drag motion to scale the 3D scan. Additaional attention has to be payed due to the fact that scaling the scans will result in scaled translations and rotations. To ensure that the ground truth rotations and translations can be compared with the scaled alignment the inverse transformation hast to be applied to all alignment translations and rotations first. This is easily done by reversing the scaling factor. The scaling function uses a uniform scale matrix as shown below with scaling factor k as well as its inverse on the right side.
 
+
+\makebox[\textwidth]{
+$\begin{pmatrix}
+			S_x & 0 & 0 & 0 \\
+			0 & S_y & 0 & 0 \\
+			0 & 0 & S_z & 0 \\
+			0 & 0 & 0 & 1 \\
+\end{pmatrix}$	
+$\begin{pmatrix}
+			1/S_x & 0 & 0 & 0 \\
+			0 & 1/S_y & 0 & 0 \\
+			0 & 0 & 1/S_z & 0 \\
+			0 & 0 & 0 & 1 \\
+\end{pmatrix}$
+}
+\[
+with S_x = S_y = S_z = k != 0
+\]
 \section{User centred Design for VR}
 
 When building an VR based application, traditional 2D user interface design cannot be simply adapted to 3D.(BELEG!)
-Using Popups or mouse emulation projected onto the view frustrum of the user constraints interaction to a 2-Dimensional experience which is rather inefficient, compared to the possibilities VR could provide.
+Using Popups or mouse emulation projected onto the view frustrum of the user constraints interaction to a 2-Dimensional experience which is rather inefficient compared to the possibilities VR could provide.
 To include VR Technology to the project, especially the cgv-Framework, new user interaction methods have to be provided and tested. Since the user is the active part of the application, controlling the actions and main methods of the scan alignment process, user centred design had to be chosen. 
 Human centred design processes for interactive systems, ISO 13407 (1999), states: 
 \begin{quote}
-"Human-centred design is an approach to interactive system development that focuses specifically on making systems usable."
+"Human-centred design is an approach to interactive system development that focuses specifically on making systems usable."\cite{w3ucdISO}
 \end{quote}
-%https://www.w3.org/WAI/redesign/ucd
 There are many aspects of UCD, the following chapters will focus on the definition and examples used in this thesis corresponding application, showing their usage and further features.
 
 \subsection{Constraints and Affordances}
@@ -207,8 +224,35 @@ Working in VR allows the user to reposition scan components as he wishes to ever
 To pick a scan naturally the user could just walk to the side of the room and pick them up there. This would force one to repeatedly walk across the virtual room to the one wall and back to the table in order to assemble the scan by picking the components. To increase the efficiency and to decrease the effort to reach the scans, the tool has a build in drag function and a corresponding ranged pick function. This function works as a so called "extender grab"\cite{Jerald2015} %[JJ indirekt, Mine at al]
 and allows the user via box ray intersection to grab a scan which is out of his personal space.
 The hand remote "shoots" a ray from its front direction which now is tested in a Bounding box ray intersection function. If it intersects a component this component is picked.
-%Mathematical background?
-If there is more than one component in a row that are intersected the one nearest to the user is chosen. 
+
+
+In order for this algorithm to work the box ray intersection with axis aligned bounding boxes has to be defined first.
+An axis aligned bounding box (AABB) is a box defined by two points, min and max. These points span a box along all three coordinate axes of the world coordinate system. This box is defined as the minimum sized box which contains all points of the encaspuled object. This technique is often used in raytracing applications to easily determine if a given ray has even the chance to be blocked by the object, saving computational costs of just estimating every possible intersection with every object of the scene. With these boxes it is first checked if the ray could touch the object anyway and the computational expensive intersection method is called only if this first intersection exist.
+
+In our case these boxes can be rotated and translated due to the fact that the user can interact with scans and can translate and rotate them freely. In order to estimate the intersection the ray has first to be transformed to the boxes local coordinate system by substracting the translation vector from the rays start point and end point and then using the inverse rotation on the results.
+After this the ray is now in the local coordinate system and the local intersection is calculated.
+
+This works defining the bounding box as axis parallel plane stripes, reducing the intersection problem to one dimension. The intersection between this plane and the ray with his origin and direction vector can be expressed as a linear function:
+\[
+ f(x) = a^* * t + n
+\]
+
+t is the velocity of the ray equal to its change over time. This is equal to the x,y or z coordinate of the ray direction
+
+a is the factor which is calculated. As this is a plane, the result a is an intervall
+
+n is the x,y or z coordinate of the ray origin
+
+If a* is defined for all axes and the formula 
+\[
+a^x \cap a^y \cap a^z
+\]
+yields an interval which minimum is the factor needed for the ray origin to travel to the intersection with the bounding box along the ray direction.
+The intersection point P is then defined as:
+\[
+P_I = minimum(a) * raydirection
+\]
+If there is more than one component in a row that are intersected the one nearest to the user is chosen by using the shortest calculated distance, which equals the minium of interval a.
 
 \subsection{Grouped scans}
 
@@ -281,8 +325,7 @@ The repositioning of scans due to reversing or restoring action triggers an anim
 
 \section{Implementation problems}
 
-The first task was to implement an environment to test and develop the interactive methods used for this study.
-However there were several problems that occured during this phase. The real problem was to find a appropriate libary that included a registration algorithm. The application used the version from the stanford university which had strange results when using the sparse ICP version. The results where nowhere near the actual results and about 13 meters away from the right aligment. Possible reasons for this is maybe the use of an older version of the Eigen library in the ICP algorithm. Since this library is incompatible with the framework the only remaining solution was to switch to the ICP algorithm which deliverd better results. Unfortunately this algorithm is nowhere nearly as stable as the sparse ICP algorithm. (BELEG) In order to prevent crashs during execution additional precausons had to be implemented such as check for infinity and NAN vectors, which should normally not occur at this point. The reason is that the ICP is not always numerical stable and can produce such results. Fortunately these are rare and occured only when trying to align point clouds that are not coarse aligned and contained outliers. Since the coarse alignment is taken care of by the user, in the application this problem is minor.
+
 
 \section{Hardware problems}
 

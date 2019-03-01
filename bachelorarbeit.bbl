@@ -1,5 +1,11 @@
 \begin{thebibliography}{10}
 
+\bibitem{vivehelp}
+
+
+\bibitem{w3ucdISO}
+
+
 \bibitem{bentley1975}
 Jon~Louis Bentley.
 \newblock Multidimensional binary search trees used for associative searching.
@@ -44,6 +50,13 @@ Andreas Nuchter, Kai Lingemann, and Joachim Hertzberg.
 \bibitem{Besl92}
 Neil D.~McKay Paul J.~Besl.
 \newblock Method for registration of 3-d shapes, 1992.
+
+\bibitem{Pietrzyk1994}
+Uwe Pietrzyk, Karl Herholz, Gereon Fink, Andreas Jacobs, Rüdiger Mielke, Ina
+  Slansky, Michael Würker, and Wolf-Dieter Heiss.
+\newblock An interactive technique for three-dimensional image registration:
+  Validation for pet, spect, mri and ct brain studies.
+\newblock {\em The Joumal of Nuclear Medicine}, 35(12), December 1994.
 
 \bibitem{Rusinkiewicza}
 S.~Rusinkiewicz and M.~Levoy.
