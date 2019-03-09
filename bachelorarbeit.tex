@@ -517,6 +517,24 @@ As this application relies heavily on the cgv Framework a long time at the begin
 
 \chapter{Conclusion}
 
+For this chapter the thesis problems are reviewed and checked if they were resolved and if not what additional steps are necessary. 
+The literature reasearch on interactive registration methods was done in the first chapter about 3D registration, but is very short due to the fact that there are not as many interactive approaches to the problem of 3D scan registration. However it was enough to gather information from comparable work and use this information to avoid similiar problems during the experiments.
 
+The collection of a representative set of 3D scans was provided by the char of computer graphics of the TU dresden. During the first test phases the 3D scan repository of the university of stanford was used. Mainly the well known stanford bunny but as well the drill scan, which has very few points and was especially usefull during debug mode.
+
+The Design of a VR environment was successful and as the experiments have shown an interactive registration was not only possible but also efficient. The average time needed for a full alignment was a bit above ten minutes and users of the application rated it as efficent and positive with some minor missing details.The picking and positioning strategy was successful and turned out to be intuitive and easy to pick up for most users. A small improvement on the way rotation can be adjusted was missing.
+
+The strategy and development to guide the users was cut short due to a lack of time. Instead an oral introduction to the process has been given before each experiment, which was enough for all users to fullfill their task. However test persons mentioned that they were missing a way to see the controlls and had to ask sometimes if they forgot a function. As a concept an reconstruction of the controller with small icons on every button should be considered. These icons should give a hint what functionality the specific button has and would help the user to understand the features. Additionally a short introduction clip or popup should instruct the user to what his or her task is. With these additions a supervisor explaining everything at the beginning would become obsolete.
+
+The automatic fine registration algorithm could not be included as statet in the chapter implementation problems. A possible solution is an own simple version of the ICP that uses the already implemented subsampling methods and could work more efficent than third party provided software. Because the coarse alignment generated from user input is quite accurate the ICP would not need to be as strongly optimized as other versions that are used in fully automated registration software. This would also enable real time calculations of the fine registration, as in this interactive system a long ICP calculation would lock down user interaction during that time.
+
+The evaluation and conducting of a qualitative user study was performed with success and proved that the concept of an interactive 3D scan registration software can work. The application developed during this thesis needs some small improvements and additions and then could be tested again with more conditions and an higher accuracy.
+
+Due to the time shortage no optional tasks were fulfilled.
+
+The concepts used in this thesis can be applied to several fields of usage. As already mentioned in related work some fields of application like medical scans already need a person as supervisor to check the scans produced by machines. In this field an efficent interactive registration method for MRT and other medical scans may be useful replenishment to enhance the processing of these scans. In order to refine this method further research in improvements to the application is needed.
+As a second possible field of use the gaming industry may use these developed methods and concepts for 3D virtual puzzle games, as there is now the possibilty to create more complex and challenging puzzle of real 3D scans that the user now can align. As mentioned by all participants of the study, the general experience was interessting and some also mentioned that they did enjoy the task to put together a 3D scan, though even it was nothing more than a point cloud in that time. By adding a more realistic environment and even surface reconstraction as well as textures the application could provide a game like experience.
+
+My own impression of the application is that with addition of several features and improvments i assume that an additional study could provide interesting insights to the concept of interactive 3D scan registration.
 
 \end{document}
