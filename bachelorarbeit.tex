@@ -53,17 +53,34 @@ In order to successfully apply such construction techniques, some basic problems
 This thesis goal is to conduct research in previous attempts for solutions of this problems which include user interaction, as well as to develop an interactive 3D registration programm. Finally a user study should provide more usefull insights on the interactive registration process in virtual reality.
 
 \chapter{3D scan registration}
-The registration problem is defined as finding the matching transformation for one or more sets of data to match to a target set of data.%BELEG
-This task can be splitted into the coarse and fine registration.
-In order to work properly, or to achieve faster and better results, most registration algorithms require a coarse registration that is done before the actual algorithm starts. 
+The registration problem is defined as finding the matching transformation for one set of data to match to a target set of data.%BELEG
+This task can be splitted into the coarse and fine registration, the first one is a rough guess, the second one the actual registration that brings both data as close as possible.
+In order to work properly, or to achieve faster and better results, most registration algorithms require a coarse registration that is done before the fine registration algorithm starts. 
 \begin{quote}
 "Depending on the method used, a quite accurate initial
 guess is required because some methods have convergence
 problems due to the presence of local minima."\cite{salvi2007}
 \end{quote}
-Fully automated algorithms for the registration problem mostly need 2 different algorithms for coarse and fine alignment. As an example shown in a paper by Ji \cite{Ji2017} an improved method of the ICP for fine alignment and a genetic algorithm for coarse alignment is used. When examining the research results it is obvious that the focus of current researches lies on fully automated approaches. In difference to my thesis user interaction for registration is kept to a minimum, mostly just used to manually check for registration errors due to local minimas. This is the case in a semi automatic of Chao, who used feature based methods for registration and only to reduce rotation errors the user is involved by chosing the correct rotation.\cite{Chao}
 
-In 1994 the 3D image registration for Validation of several medical scans was proposed along with an interactive coregstration algorithm by an article of Uwe Pietrzy et a\cite{Pietrzyk1994}. The main goal was to align scans of brains with a reference scan in order to detect anomalies, which may indicate a desease of the patient. The corregstration is mainly driven by user interaction and achieved accurate results that put up to the fully automated techniques of that time. At the same time the algorithm was far less restricted than the fully automated techniques, because of user interaction. Figure 2.1 shows the workflow of the application developed by them.
+To ensure the registration does not stuck in a local minima different methods have been developed, however the following chapter will focus on related work which includes interactive methods to solve the coarse alignment problem.
+
+%The method proposed by this thesis is a mixture of a manually coarse alignment and simple ICP version that should be capable of running in real time, making it a subject of interest for gaming applictations as well as real time CAD applications.
+%The coarse registration problem was often solved manually by used a WIMP[explain WIMP] based interface like in Chaos paper \cite{Chao}. To enhance the process further and in order to give the user more insight and controll over his 3D models, a virtual environment is used in our application instead.
+
+%The main goal of this thesis is to investigate if this coarse alignment problem can be solved more efficiently by introducing the user to a virtual environment capable of fully displaying the point clouds in all three dimensions and how accurate an alignment in this environment is, based on a ground truth data set. 
+
+\section{Related Work}
+
+As introduction to the field of interactive registration and in order to gain information of the general idea, this chapter will focus on examining related work. Fully automated algorithms for the registration problem mostly need 2 different algorithms for coarse and fine alignment. As an example shown in a paper by Ji \cite{Ji2017} an improved method of the ICP for fine alignment and a genetic algorithm for coarse alignment is used. The current research in this shows a tendency for fully automated algorithms, interactive methods are rare cases.
+
+An important work to mention is a semi automatic approach of Chao, who used feature based methods for automated registration and to reduce rotation errors the user is involved by chosing the correct rotation.\cite{Chao}
+In the first step of their method, an automated registration is executed. After that happened, the result is shown to the user and he can chose to keep the alignment if it is correct, otherwise he can correct the initial rotation. The possible rotation options are limited due to a precalculation step that determines the possible rotations via heuristics. The rotations are then restrained to the axis of the scenery.\cite{Chao}
+
+The experiments conducted along with the tests of this method showed positive results:
+Whenever the fully automated initial registration failed, errors were eliminated by user interaction and all scans were aligned. The needed time differed wether much user interaction was needed or not and how many features that disturbed the automated algorithm the scans contained.
+
+Another paper proposed a more user interaction dependend method in 1994.
+The 3D image registration for validation of several medical scans was proposed along with an interactive coregstration algorithm by an article of Uwe Pietrzy et a\cite{Pietrzyk1994}. The main goal was to align scans of brains with a reference scan in order to detect anomalies, which may indicate a desease of the patient. The corregstration is mainly driven by user interaction and achieved accurate results that put up to the fully automated techniques of that time. Additionally the algorithm was far less restricted than the automated techniques, which needed different ensurances to work. Figure 2.1 shows the workflow of the application developed by them.
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width= \linewidth]{flow_chart_uwe_p.png}
@@ -71,15 +88,11 @@ In 1994 the 3D image registration for Validation of several medical scans was pr
 	\label{fig:workflow}
 \end{figure}
 
-The method proposed by this thesis is a mixture of a manually coarse alignment and simple ICP version that should be capable of running in real time, making it a subject of interest for gaming applictations as well as real time CAD applications.
-The coarse registration problem was often solved manually by used a WIMP[explain WIMP] based interface like in Chaos paper \cite{Chao}. To enhance the process further and in order to give the user more insight and controll over his 3D models, a virtual environment is used in our application instead.
-
-The main goal of this thesis is to investigate if this coarse alignment problem can be solved more efficiently by introducing the user to a virtual environment capable of fully displaying the point clouds in all three dimensions, instead of using a WIMP based interface.
-The fine registration could then be added with a proper algorithm additionally, in the best case this should execute real time with an animation.
-
 \section{Introduction to registration algorithms}
 
-To achieve this goal of fine registration several steps are necessary:
+In order to solve the registration problem, different strategies have been developed. The first step, the coarse alignment, can be done by user interaction or other specialized algorithms. The second step of fine registration needs an algorithm, because interactive methods cannot achieve as accurate results as the registration done by computers. This chapter should provide an insight to the fine registration problem, espicially its solution through an commonly used algorithm. First the prerequisites are examined, then the Iterative closest point algorithm is explained as an example for the solution of the registration problem.
+
+To achieve this goal of fine registration the task can be splitted into several steps:
 \begin{enumerate}
 \item  Find corresponding points between the roughly aligned sets of data
 \item  Find a formula to retrieve the transformation needed to align dataset A to dataset B using the correspondences found in 1.
@@ -89,12 +102,12 @@ To achieve this goal of fine registration several steps are necessary:
 
 \subsection{Correspondences}
 
-To find corresponding points between 2 sets of points a fast and efficient method is needed, hence the application should work in real time and not use more than 500ms as this is only the first step for the registration algorithm.
+To find corresponding points between 2 sets of points a fast and efficient method is needed, hence this study is focused on user interaction which is disturbed if an algorithm would need long times and the sorrounding application does not respond.
 The k-nearest neighbour search (knn-search) is commonly used for such problems, as its includes the distances between the nearest points and should deliver good results, given the scans are near together and approximately have the correct rotation. The circumstances of the application fullfill this requirements, since it needs the user to coarse align the scans before the automated fine alignment.
-The knn-search does calculate, as its name implies, the distance to the nearest points. To estimate the nearest neighbours, distances between the individual points need to be calculated and then sorted to find the closest points.
+The knn-search calculates, as its name implies, the distance to the nearest points. To estimate the nearest neighbours, distances between the individual points need to be calculated and then sorted to find the closest points.
 
 Given this situation a simple knn-search with the brute Force method fails. The method would calculate all distances between all points, the resulting complexety of  \textit{O(mnd)} \cite{Garcia2008}, with m as nubmer of all points from point cloud 1 and n with the number of all points from the second point cloud. d is the number of nearest points that are obtained and stored. This does not meet the requirement of the application to work in real time with point clouds with a higher number of points.
-To enhance the efficency of this method many different acceleration data structures have been introduced. The one used in the actual implementation of the application for this thesis is the so called KD-tree.
+To enhance the efficency of this method many different acceleration data structures have been introduced. The one used in the actual implementation of the application for this thesis is the so called KD-tree, which will be explained in the next sections.
 
 \subsection{KD-Trees}
 
@@ -108,7 +121,7 @@ Their main advantage is their runtime for knn-querys:
 \begin{quote}
 "for nearest neighbor queries [empirically observed average running time of \textit{O(log n)}.]" \cite{bentley1975}
 \end{quote}
-Using KD-trees for a knn-query results in a much better performance since building a kd tree and using it costs less than using brute force method. Furthermore through parallelization the actual runtime can further be reduced. The code excerpt below shows a snippet which uses a KD-tree for a knn-query executing parallel. This implementation is used during the execution of the fine alignment of the version of the ICP this application uses. The code is taken from the stanford university.
+Using KD-trees for a knn-query results in a much better performance since building a kd tree and using it costs less than using brute force method. Furthermore through parallelization the actual runtime can further be reduced. The code excerpt below shows a snippet which uses a KD-tree for a knn-query executing parallel. This implementation is used during the execution of the fine alignment of the version of the ICP which was tested during development. The code is taken from the stanford university. %LINK
 
 \begin{figure}[htbp]
 \begin{lstlisting}[frame=trbl]
@@ -120,21 +133,20 @@ Using KD-trees for a knn-query results in a much better performance since buildi
 \end{lstlisting}
 \end{figure}
 
-Newer researches have shown that cached KD-trees algorithms using GPU programming have better results\cite{Garcia2008}, this will not be the case in our application since the GPU is fully occupied by providing a rendered stereoscopic view.
-
-The resulting correspondencies can now be used to calculate a rigid-body transformation that aligns two point clouds. To achieve this, the application uses a commonly known algorithm called Iterative closest point (ICP).
+Newer researches have shown that cached KD-trees algorithms using GPU programming have better results\cite{Garcia2008}, this will not be the case in our application since the GPU is fully occupied by providing a rendered stereoscopic view and the ICP was removed due to several problems. See Chapter Problems for details.
+The resulting correspondencies can now be used to calculate a rigid-body transformation that aligns two point clouds. To achieve this many applications rely on a commonly known algorithm called Iterative closest point (ICP).
 
 \subsection{The iterative closest point algorithm}
 
 \begin{quote}
 "ICP starts with two meshes and an initial guess for their relative rigid-body transform, and iteratively refines the transform by repeatedly generating pairs of corresponding points on the meshes and minimizing an error metric."\cite{Rusinkiewicza}
 \end{quote}
-In this case the Transformation is a translation and a rotation matrix that when applied to the point cloud aligns it to the target point cloud.
+In the test during the development the Transformation is a translation and a rotation matrix that when applied to the point cloud aligns it to the target point cloud.
 
 The initial guess is provided by the user with a coarse registration. The ICP then makes use of step 2-4 (see top) always iteratively converging to a local optimum.\cite{Besl92}
 The ICP algorithm in the variant that was and is widely used in registration problems and was introduced 1992 by P.J. Besl and Neil D. McKay\cite{Besl92}. Over the years several optimization steps have been added to the ICP in order to boost the speed and efficency.
 
-Before starting the actual algorithm it has to be considered that the real time requirement can obviously not be fulfilled with larger point clouds as shown in measurements in table 1 [see table with times]. But aligning and grouping several point clouds to one and aligning this greater point cloud will sooner or later result in a large point cloud that has to be aligned. To still fulfill the real time requirement a subsampling method is needed.
+Before starting the actual algorithm it has to be considered that the real time requirement can obviously not be fulfilled with larger point clouds as runtime increases significantly with each point added. But aligning and grouping several point clouds to one and aligning this greater point cloud will sooner or later result in a large point cloud that has to be aligned. To still fulfill the real time requirement a subsampling method is needed.
 
 \subsection{Subsampling}
 
@@ -145,14 +157,9 @@ To avoid large overhead due to the creation of randomized numbers the function u
 
 Several problems may occur with this method, if no feature extraction, detection of outliers and restriction of subsampling area is defined the accuracy can significantly be lower than without subsampling. Losing features by subsamling causes the algorithm to find less correspondencies, because there are less patterns left. The missing detection of outliers cause them to have greater impact to the resulting alignment, because their amount relative to the totality of points increases. The last point, the restriction of subsampling area is important, because if there are no restrictions, the subsampling method may eject overlapping points of the 2 scans, which are in fact the most important correspondencies for the algorithm. 
 
-\section{Analization and tests of used methods}
-
-In order to enhance the real time compability as well as the general accuracy of the used ICP methods, a public open source code library of the stanford university was used and integrated as header file. Unfortunately this library had a lot of issues with the underlying dependecies and was not perfectly compatible to the framework. As for the sparse ICP implementation results were nowhere near usable, the alignments were diverging instead of getting closer. The basic point to point method which used %which weigting?
-was more accurate. Unfortunately this method often failed to align scans due to finding local minima which were incorrect. The missing numerical stability included the possibility to produce INFINITE vectors or even NAN results.
-
-The real time requirement restrained the usage of more complex variants with refined error metrics due to the fact that the running time would increase signiflicantly. Final tests in the actual application with the vive showed that the calculation time increased as well due to the complexity of handling a complete framework which renders a 90Hz stereoscopic view for the vive and has to handle at the same time polled events of the technical devices such as pose events, button events and further more. As the usage of the ICP with more complex scans than the initial test set (the drill scan from the stanford 3D scan repo) completely failed to work in real time with subsampling and even failed to proper align without subsampling, the ICP has been cut out of the program.
-
 \chapter{Interactive VR-Concepts}
+
+%INTRO
 
 \section{The virtual environment}
 
@@ -214,7 +221,7 @@ To avoid or at least lower the impact of this conflict user-feedback can be used
 
 \subsection{Feedback design}
 
-Feedback is an essential user experience, which should result in information gain about the result or status of a task or object the user interacted with\cite{Jerald}.
+Feedback is an essential user experience, which should result in information gain about the result or status of a task or object the user interacted with\cite{Jerald2015}.
 A use case in our program would be the switching of colours of a scan when its selected or not. A global selection colour (Bright Red) indicates that this object is selected and will be reference point for further actions. Since scan alignment needs at least 2 scans to be practical the application has a 2 step selection:
 Selecting the first scan changes its colour to bright red. But when the next scan is selected the first one changes its colour to a less brighter red signalling it is the secondary pick. Applying the alignment now starts an ICP which moves the second picked scan (the one that is now active) toward the first one.
 
@@ -232,16 +239,16 @@ An axis aligned bounding box (AABB) is a box defined by two points, min and max.
 In our case these boxes can be rotated and translated due to the fact that the user can interact with scans and can translate and rotate them freely. In order to estimate the intersection the ray has first to be transformed to the boxes local coordinate system by substracting the translation vector from the rays start point and end point and then using the inverse rotation on the results.
 After this the ray is now in the local coordinate system and the local intersection is calculated.
 
-This works defining the bounding box as axis parallel plane stripes, reducing the intersection problem to one dimension. The intersection between this plane and the ray with his origin and direction vector can be expressed as a linear function:
+This works by defining the bounding box as axis parallel plane stripes, reducing the intersection problem to one dimension. The intersection between this plane and the ray with his origin and direction vector can be expressed as a linear function:
 \[
  f(x) = a^* * t + n
 \]
 
-t is the velocity of the ray equal to its change over time. This is equal to the x,y or z coordinate of the ray direction
+t is the velocity of the ray equal to its change over time. This equals to the x,y or z coordinate of the ray direction obtained from the front direction of the controller pose
 
-a is the factor which is calculated. As this is a plane, the result a is an intervall
+a is the axis parallel plane stripe projected to the axis. This causes a to be an intervall.
 
-n is the x,y or z coordinate of the ray origin
+n is the x,y or z coordinate of the ray origin which equals the current controller position
 
 If a* is defined for all axes and the formula 
 \[
@@ -252,23 +259,47 @@ The intersection point P is then defined as:
 \[
 P_I = minimum(a) * raydirection
 \]
-If there is more than one component in a row that are intersected the one nearest to the user is chosen by using the shortest calculated distance, which equals the minium of interval a.
+If there is more than one component in a row that are intersected the one nearest to the user is chosen by using the shortest calculated distance, which equals the minium of interval a. The interval with the smallest minimum is the component closest to the user.
 
 \subsection{Grouped scans}
 
 During the alignment the user may find the correct rotation and translation to align to scans. To save this but also be able to manipulate the scans rotation and translation without destroying the alignment, the user group scans. These groups now work as one scan with a shared Bounding box and shared translation and rotation and colour. If the user tries to pick the scan they both are selected and if he starts an ICP with the selected group and another group, both scans points are used.
 This may come unhandy when the scans are grouped incorrectly and now need to be separated again. To solve this an extra function was implemented. This function splits a group by translating them towards the averaged normal directions of their individual points.
-INSERT PICTURE
+
 By using the cross product of their averaged normalized normal vector and a dynamic vector which is generated out of the amount of the amount of components the group has.
 This is achieved by dividing a circle by the number of scans. The resulting angle is used in a rotation matrix around the z axis. By multiplying the matrix with the (1,0,0) vector x times normalized directions are derived.
+The rotation matrix is an axis rotation arround the z axis and shown below. Note that the same result could be achieved by using a Quarternion which represents the same rotation.
+
+\makebox[\textwidth]{
+$\begin{pmatrix}
+			\cos{ \alpha } & 0 & \sin{ \alpha } \\
+			0 & 1 & 0 \\
+			- \sin{ \alpha } & 0 & \cos{ \alpha } \\
+\end{pmatrix}$
+}
+
 To avoid the possibility that bigger scans can overlap even after the split the minimal distance needed to translate the scans without overlapping is calculated using 2 restrictions:
 \begin{enumerate}
-\item The maximal Bounding box diagonal is equal to the diameter of a circle around the whole component. To avoid overlapping the point to point distance between the middle points of their bounding boxes has to be at least bigger than the maximal Bounding box Length of the biggest Bounding box
-\item The 3 points: averaged middle point of the whole group and the translated Bounding Box middle points of 2 of the scans form a nearly icosceles triangle.
+\item The maximal Bounding box diagonal is equal to the diameter of a circle around the whole component. To avoid overlapping the point to point distance between the middle points of their bounding boxes has to be at least bigger than the maximal Bounding box Length of the biggest Bounding box.
+\item The averaged middle point of the whole group $M_a$ and the translated Bounding Box middle points $M_1$ and $M_2$ form a nearly icosceles triangle.
 \end{enumerate}
-Therefore the minimal translation distance equals (gleichschenkliges dreieck formel).
-The application uses a factor of 1.1 of this minimal distance to avoid errors due to the fact that the computer works with floats and doubles which are not always precise and that there may be a distance between the averaged middle point of the group and the middle point of the Bounding Boxes of the scans. This is especially the case if the scans contains outliers.
+This can be seen in Figure 3.1 below: 
 
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width= \linewidth]{ico_pic.png}
+	\caption{The triangle $M_a$ $M_1$ $M_2$ with c equals the sum of the radius of both circles. Hence the calculation only takes the radius of the bigger bounding box, theside c is well defined as 2r equaling the maximal bounding box diagonal}
+	\label{fig:ico}
+\end{figure}
+
+Therefore the minimal translation distance from the centre point can be calculated using this formula derived from the formula for icosceles triangles c side by change of constellation.
+\[
+{\displaystyle  a= {\frac {c}{2 \cdot \sin \left({\frac {\gamma }{2}}\right)}} }
+\]
+C equals the minimal distance between the middle points of two seperate scans, which is equal to the maximal bounding box diagonal. The minimal translation in this formula is represented by a.
+The assumption of the program is that the middle point of the scans is near to the averaged middle point of all its points. This is only the case is the distribution of points is evenly among the scans bounding box, and if the bounding box is not heavily deformed due to outliers.
+As further suggestion an outlier detection on loading the scans to the program should ensure this restraint.
+The application uses a factor of 1.1 of this minimal distance to avoid errors due to the fact that the computer works with floats and doubles which are not always precise and that there may be a distance between the averaged middle point of the group and the middle point of the Bounding Boxes of the scans.
 After this splitting translation was executed, the user now can chose a single component out of the group and separate it. The remaining group turns back to its initial state, the separated scan is lifted above the group.
 
 \subsection{Scan positioning}
@@ -298,53 +329,194 @@ These special functions are not directly called by the user. They are instead ca
 \subsubsection{The reposition execution animation}
 
 To avoid instant teleportation, every repositioning that is not handled by directly grabbing a component thus attaching it to the hand controller, is instead animated as a linear blend between the original translation position and the target translation position. Additionally a second animation executes the rotation (if there is one) at the same time.
-These linear blend is executed on colours as well, making hard colour switches only available for blinking animations or the picking event. This is especially important to signalize that blinking colours are indicating that the user has to confirm an action. Additionally the user can see what he caused with his actions instead of a rapid state change of the program. When several translations are executed by one action it could be irritating with no fluent transition to the new state.(AUSDRUCK)
+These linear blend is executed on colours as well, making hard colour switches only available for blinking animations or the picking event. This is especially important to signalize that blinking colours are indicating that the user has to confirm an action. Additionally the user can see what he caused with his actions instead of a rapid state change of the program. When several translations are executed by one action it could be irritating with no fluent transition to the new state.%(AUSDRUCK)
 
 \subsubsection{The dragging fucntion}
 
 One of the core functionalities for this application is the possibility for the user to directly "grab" a scan and align it by hand next to the target. In order to work this feature needs several helping functions. The picking method determines the selected scan. If the user holds the picking button, the selected scan is now bound to his controller by the controllers virtual pose. This pose is described as a matrix containing the origin point of the controller in world coordinates, as well as all 3 axes of the controllers coordinate system in world coordinates. By calculating the position of the picked group or component in the local coordinate system of the controller and storing this value dragging becomes possible. The local position is obtained by multiplying the local pose of the component (if it is a group all calculations need to be made componentwise seperately) to the inverted pose of the controller. As soon as the pose of the controller changes, the actual pose matrix is multiplied to the already stored local positions, resulting in a tranformation so that the pose of the gourp or scan in the controllers coordinate system remains equal. The actual result in world coordinates is a transformation as if the scan/group is bound to the controllers picking ray. Additionally the user can change the group/scans local pose towards the controllers z axis. This results in the scan/group coming nearer towards the controller, or further away. This action is triggerd by a scrolling movement on the touchpad. 
 
+\subsection{Controlls Mapping}
+
+When it comes to user interaction the VR-Hardware used for this programm provides different physical interfaces to interact with. 
+The first Mapping was to define a main controller, which has been the right one, due to the fact most people are right handed. Only the main controller is capable of dragging scans and reposition them.
+Dragging two groups of scans at the same time could have a negative impact on the framerate of the program, as well as it would obtain one more button from the left controller for a function that is already implemented on the right controller.
+
+The shortage of buttons on the controllers forced the mapping to use both controllers seperately for different functions. The trigger of the main controller is the picking button and when pressed and held above the 0.4 threshold acts as dragging controller. As described above the touchpad is limited to only track up and down in order to get groups towards the controller or away. The second touchpad on the other hand is not used, as there is no second function that could use a scrolling functionality. Additionally this scrolling motion would get triggered everytime the press function is used on this touchpad. To not mix up scrolling and pressing function on touchpads, the right touchpads pressing buttons are not used, instead the left ones are used. The first function is to position the picked group above the table (UP), which should enhance the intuitivity by connecting the up button with a function that positions scans mostly upwards. Additionally the restore the last state or abort (left) and restore back (right) are on the same touchpad and ordered in oposite directions to sharpen the contrast of their inverse fucntionality. The downward button was once mapped to start the ICP but this was removed.
+
+The menu button of the main controller is bound to the uniting action. This merges two groups to one group as the right controller is designed to drag scans and interact more with the scans, the merging action should be mapped to the same controller.
+The menu button on the other controller however, is mapped to the exact opposite of this action, it opens the seperation selection. As the menu button is the one button thats most difficult to reach after the hard to press grip button, accidently dissasembling a aligned group should not happen.
+The reset function is mapped to the left grip button. As this function should not be called and is only there for debugging purposes or if the user really does want to erase his progress, this function got mapped to the button that is hardest to press and not called by accident.
+In order to avoid confusion or accidental use of the reset fucntion, the right grip button is not used. This way users may not confuse the button with its pendant on the right side containing the reset function. For safety the restore latest state function can undo the reset function.
+%Deselection function not biuld in!!!!
+
 \subsection{Additional application concepts}
 
-Some features of computer programs have evolved over the time and it is common to include them to all applications because of their general purpose. For example the possibility to restore the program state before the last action is a well known feature and commonly expected to be in every program. (FIND QUOTE)
-This feature is implemented by a stack which tracks all program states since the last project loading was called. The inverse function, restoring a state which was after the actual state but has been falsely reversed, is implemented too.(AUSDRUCK!)
-The repositioning of scans due to reversing or restoring action triggers an animation as well. This animation is similiar to the one used in the reposition execution animation and applies to colors, rotations and translations.
+Some features of computer programs have evolved over the time and it is common to include them to all applications because of their general purpose. For example the possibility to restore the program state before the last action is a well known feature and commonly expected to be in every program. %(FIND QUOTE)
+This feature is implemented by a vector which tracks all program states since the last project loading was called. If the user now decides to reverse his last action, the vectors latest pushed state is loaded and restored. Additionally the possibility to reverse this restorement is included as well. The vector then only restores the i+1 th state after the actual programm state if this state exists. By reversing a state, then pushing a new state via a specific action the old i+th state will be deleted to avoid state inconsistency.
+The repositioning of scans due to reversing or restoring actions triggers an animation as well. This animation is similiar to the one used in the reposition execution animation and applies to colors, rotations and translations.
 
 \chapter{Interactive VR-user study}
 
+To examine the capability of coarse alignment systems in VR a user study has been conducted. In order to work properly the programs starting state for this study has been predesigned. The first part of the study included a short introduction to the handling the VR environment as well as a short phase for all probants to explore and test the features the programm delivers. In the second part the probants are encouraged to align a ground truth dataset provided by the chair of computer graphics as exact as possible by hand. %Chair?
+There is no time limit for this process the user decides wether he is finished or not after all scans are in one controll group. During the execution of the test, feedback for questions with the handling is allowed, due to the fact that a user may not memorize all functions of the program after the introduction.
+
+Afterwards the probant is asked to fill out a short form to evaluate the usability of the program for further improvments. The used form can be found in the Appendix, both in english and german. 
+
 \section{Test setup}
 
+The tests took place in the Holodeck room of the faculty of computing since. In this room the tracking stations were setup in two corners of the room diagonal to each other. The trackable area was sized to fit at least 3.5 x 3.5 meters and has a real table in it to emulate the virtual table. The exact measurement of the table was estimated beforehand and the program was initialized with the exact virtual copy of this table. The users now interact with a virtual projection of a real existing table.
+
+The full test setup from above can be seen in figure 4.1
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width= \linewidth]{test_setup.png}
+	\caption{The test setup from a top down perspective}
+	\label{fig:test}
+\end{figure}
+
+In the virtual environment all tests scans are located on a height of about 1.8 meters floating at the left wall. The user now can drag them onto the table or use the selection and positioning function to directly put a selected scan onto the middle of the table.
+The dataset used for this test the owl data set which contains normals and a known ground truth alignment. Scaling had to be set to x, so that the seize of the owl is about 0.7 meters high.
+
 \subsection{Equipment}
+
+The complete setup uses two vive hand controllers, each with a touchpad, an analog trigger, a menu button, a grip button and the touchpads themself have four press-states (up,right, down left). The system button can not be called by the program, it will always bring up the steam menu and is therefore not included as interaction. The two tracking stations are mounted at eh ceiling of the room in about 6.25meters distance, which is a bit too much for the optimal distance that is suggested by valve. The head mounted display (HMD) is attached to a computer on the north side and has about x meters cable length, enough to reach every corner of the room. To avoid possible problems with the cable twisting around the user, the supervisor always keeps track of the cables situation during the experiment.
+The used pc for this study was a four core machine (Intel i5 2700k) with a Nvidia GeForce 1060 GTX graphics card. The capability of the system to provide a 90Hz pickture with a constant framerate and no framedrops was testet before and is monitored during the tests.
+
 \subsection{Guidance}
+
+Before starting the tests users were introduced to the program in a short explanation and summary what they will do and what is excpected. There was no time limit set in order to let the user take their time for more precise alignments. During the tests constant feedback for questions was garantueed by the test supervisor and the mappings of features could constantly been asked for.
+
+\subsection{Tracked metrics}
+
+The program constantly records user interactions in the programs state vector, but due to the fact that by reversing actions some reversed actions may be deleted and not recorded anymore an additional change stack was introduced. Every user interaction that caused a program state change is pushed back to the stack and counted as well as differentiated by the kind of state change. These state changes include: scan pick, scan drag, scan unite, scan seperate, repositioning above table, reverse action, restore action and the hopefully not to be used reset function.
+Additionally the time the probant needed to align the scans is measured too.
+The most important metric however is the accuracy which is calculated afterwards. The project allows to save all translations and rotations to a special file format called transformations project file (.tpj). This contains the file path for unabgious identification of the component along with the translation vector and the rotation in quaternion representation. The ground truth data is then scaled identically to the scaling used by the test, otherwise the results would not be usable as both transformations woudl be saved with different scalings.
+Then the two error metrics average translation error and average rotation error are calculated by a function when saving the user generated tpj file and written there as output. Its code can be reviewed in the Appendix.
+
+The last metric usability is a subjective metric which was obtained by a short form users filled out after the test. 
+
+\subsection{Calculation of translation and rotation Error}
+
+When calculating these metrics, several problems have to be considered. The translation and rotation information accessible from the program are in world coordinates. Simply calculating the difference between the aligned data and the test data would result in a not reliable metric, as this would depend on the orientation and position of the aligned data in the virtual world. A simple approach to handle this problem is to selecting one component of the ground truth data and calculate the transformation of this to the corresponding component of the aligned data. This is a more reliable metric but still would result in having a direct dependency between the accuracy of the selected component and the rest of the components towards only this component. The general accuracy between all components to another would not be considered. 
+In order to objectively calculate an error metric that does not rely heavily on one specific component, the following method was considered to be the best. The program calculates the relative pose of 2 components of the ground truth data and the corresponding components of the aligned data. Then both results which are relative poses are compared. 
+To do this the rotations of both components, represented by their quarternions $q_1$ and $q_2$ are used to calculate a third quarternion $q_p$ which represents a rotation from one component to the other. This is done by using the formula with the inverse of the first rotation and the second via field multiplicationt:
+\[
+q_p = q_1^{-1} * q_2
+\]
+This way the relative poses of the two components rotationwise are derived for both ground truth data $q_{p'}$ and test data $q_{p'}$. Then the difference between both poses, ground truth and test data can then be calculated with the same formula resulting in the quarternion $q_e$ which represents the rotation needed to rotate from ground truth to test data. As a quaternion itself is not a good metric to compare, the error quarternion $q_e$ is transformed to axis rotation representation. The angle of the axis rotation is then the error metric. 
+The following formula extracts this angle out of a quarternion by using the real part re of the quarternion $q_e$:%REALPART?
+\[
+	\alpha_e = 2 *  acos ( re )
+\]
+
+The translation vectors are more difficult to retrieve, as they depend on the corresponding orientation of the component. In order to resolve this dependency the differential vectors need to be orientatet to world coordinates. To get a vector between the two poses of the components, the first translation (origin) needs to be subtracted from the second translation (destination). The destination determines the direction of the vector in the room therefore needs to be oriented to wolrd coordinates. To ensure the translation differences of ground truth and test data are in the same coordinate system, the resulting difference vector has to be rotated inverse by their corresponding rotation of the destination component. Figure 4.1 shows a sketch of the described procedure.
+
+After retrieving the rotation and translation error from one component to another, the same procedure is repeated for each component, resulting in a vector of $N^2$ values. N is the number of components the dataset has. Out of these values the mean is calculated and taken as the final result, shown in the formula below
+\[
+\frac{\sum_{i=1}^{N}error}{N}
+\]
 
 \section{Test results}
 
+The the results of the error metric calculation are shown in the following table, in line with other useful information:
+
+\begin{table}[!h]
+\begin{tabular}{|l|l|l|l|l|} \hline
+Nr & mean translation error (mm) & mean rotation error (rad) & needed time (min) & total user actions \\ \hline
+1 & 102.7 & 0.161078 & 6:49 & 409 \\
+2 & 90.1727 & 0.135561 & 9:26 & 275 \\
+3 & 123.615 & 0.169968 & 12:34 & 460 \\
+4 &  &  & 21:22 & 611 \\
+5 & 77.8557 & 0.114094 & 7:12 & 210 \\ \hline
+\end{tabular}
+\end{table}
+
+Due to a bug during the execution of application Nr 2, 3 and 4 have had an extra calcuation which did not consider one or two components. See chapter Problems for more details.
+The total of user actions consists of every user interaction with the vive system, wether it was successfull or not. This does not include the interaction of changing the position of the HMD or controllers, but does inlcude every key that was klicked and is used in a function.
+Participant number five is the application author and will thereby only be considered as reference to optimum usage.
+
 \chapter{Evaluation}
+
+This chapter will interpret the test resuts as a first step. Then a short analysis of these results is done for both, the registration aspect as well as the user interaction aspect. At the last part of this chapter, an evaluation of these results will lead to the decision wether this experiment was successful or not.
+
+\section{Analysis of error metrics}
+
+The results show a clear convergence to more correct results when the user has already had experience with a VR system at all. Test person one, two and five were most expierenced with VR systems and had worked with them before. Test person 3 and 4 were completely new to such systems and therefore least accurate. The accuracy of results is actually close the semi automated method by Chao \cite{Chao}, as their average error was around 50mm before applying an ICP. The tested results show an translation error in between 70 to 120 mm achieved in less than 15minutes per average. The total time used by Chaos method was estimated to be around an hour\cite{Chao}. Allthough these results are not comparable, because of the usage of different amounts of points and scans, these numbers show that the tested method can achieve a good coarse alignment in a tenable time.
+
+By taking a look at the rotation error, the results show an astonishing tendency to be quite accurate for a manual alignment, as their average is in between 0.11 to 0.16 rad equally to 6° to 10°. This should be more than accurate enough to apply a fine registration algorithm afterwards, such as the ICP. The rotations generally show more accuracy than the translations, the reason is that a small translation error between 0 and 10 centimeters does not significantly disturb the composed point cloud in its appearance, whereas rotations that are incorrect show a greater impact on the appearance. An observation that was made is that if scans are aligned from the view of one side, an error was less easy to detect. Test person Nr 4 assembled the point cloud about 1m apart from their view point. The result was that from that perspective the alignment seemed good, but when taking a look 90° from the side the alignment was not well. Upon examining the exact calculated results componentwise there was a trend that components from the top side where near together, components from the back side as well, but both group had a significant distance between them. This distance could only be seen from another view point. This shows that the perspective problem is also present in VR, the expense to change the Viewpoint in VR is to walk at least about the length of the point cloud. %Beware °
+
+\section{Analysis of user interactions}
+
+The user interaction Analysis is splitted into two parts, first an examination of the raw data of the user interaction tracker system used for the experiments, the users feedback is included in the second part.
+
+The tracker system implemented counted every different action, the type of actions and their usage by the test persons are shown in the table below.
+
+\begin{table}[!h]
+\begin{tabular}{|l|l|l|l|l|l|} \hline
+Action type & 1 & 2 & 3 & 4 & 5 \\ \hline
+Component dragging & 157 & 103 & 160 & 210 & 97\\
+Component picking & 216 & 103 & 239 & 210 & 97\\
+Component deselect & 8 & 48 & 30 & 178 & 0\\
+Group seperation display & 7 & 0 & 2 & 0 & 0\\
+Group seperation confirm & 3 & 0 & 1 & 0 & 0\\
+Reverse last action & 2 & 8 & 8 & 0 & 2\\
+Restore last action & 0 & 0 & 0 & 0 & 0\\
+Position above table & 0 & 0 & 0 & 0 & 0\\
+Reset & 0 & 0 & 4 & 0 & 0\\
+Unite groups & 14 & 13 & 16 & 13 & 14\\
+Total of changed states & 262 & 169 & 243 & 308 & 157\\ 
+Total actions & 409 & 275 & 460 & 611 & 210\\
+\hline
+\end{tabular}
+\end{table}
+The total of actions needed for an alignment were never lower than a total of 200 actions. The count of total actions differs more or less widely to the total of changed program states, indicating an difference between actual valid actions that cause a program state change (e.g. picking a new component, repositioning it, or using any other of the functions in a valid way). The optimum for this metric would be a one to one relation, which indicates that the user never made misstakes and the workflow was as optimal as it gets. The high count of picking and dragging actions is the result of a missing rotation functions, leading to the problem that the dragging function had to be called several times in order to rotate a component. In the feedback paper two of the participants noted that an extra rotation functionality to rotate a picked scan around the normal axis of the picking ray would improve the usability. More obvious was that the function that reposistions the picked group on the table was never used. All users identified this functionality as least usefull after the experiment. The group seperation was also not often used but still considered to be usefull.
+
+The deselection functionality was mapped to the same button as the picking function but on the other controller, leading to confusion of some of the users, as they expected to pick scans with both hands. If the user is already trained in handling the application, the deselction function becomes even obsolete, proven by the optimum usage of participant number 5. 
+
+Surprisingly the difference between changed states, and total actions was not lowest for the reference participant five, but for test person two, as the difference is only 13. The  high difference for the other test persons leads back to the functionality of deselection and picking: When used several times on the same target in short time intervals the action does not count as valid, as it does not change anything. The reason this happens often is because the picking and deselection is mapped to the trigger of the controller, its values can fluctuate around the threshold causing the program to register up to 60 trigger events per second. From this events on average 10 are exceed the threshold in one way and cause the application to register all of these as actions. Because they do not change the program state, they are not counted as valid. To avoid this problem in future experiments, a timer event that blocks the picker for some miliseconds after the first valid action could be implemented. This avoids that the fluctuation zone around the trigger threshold causes the controller to constantly activate the event counter.
+
+The generall feedback after the experiment was positive, most functionalities were rated useful by the user. Especially the reverse action though not often used was particularly mentioned in this context. However the critique was mostly about bugs that were still in the program during the experiments. The picking function falsely worked in both directions, so if the user picks a scan in front of him, while the controllers back direction was pointing torwards a scan behind it, the application selected the scan behind the user. This lead to a lot of confusion and extra work, in some cases users accidently pushed these scans out of sight or through the walls of the virtual room. Due to lack of time the functionality that blocks scans from beeing pushed outside the virtual room was not finished. In two experiments this lead to a scan being completly out of sight and these had to be ignored during the calculation of the error metrics, lowering their reliablity. As mentioned before the second point was the missing rotation function.
+
+Other points which had been concerning, like the hand to controller mapping accuracy, where mostly not a problem for users. Users perceived the mapping and tracking of the controllers as natural and rated the accuracy good. The seperation selection used by test person number one was criticised for not changing the colors before the animation starts, so that the user can identify the wrong aligned scan before they traverse apart. The animation duration was considered to long and should be shortened.
+
+\section{Experiment conclusion}
+
+The accuracy of alignment and time needed for this show that the concept of coarse alignment via VR has potential. Furthermore its full potential once a fine registration alignment method is included, which drastically shorts the amount of time a user needs to reposition scans   should be considered to be even higher. Even users with little experience could align components accurate enough to execute a fine alignment algorithm afterwards. If a surface reconstraction is added users may even be more accurate due to the fact that the point clouds were only visible due to the fact that their points were shown with a width of 5 pixels. Further experimentation with an improved version of the application could show even better results.
+
+As for the user interaction the generall concepts were perceived good by the users. Concluding the users feedback a general improvement would be a rotation function during the dragging of a scan is active. A possible realisation would be to map this function on the touchpad of the dragging controller, but the user can swipe right or left or right to rotate the object around its y axis. Additionally all scans should be oriented, so that the actual top side of the scan shows towards positive y direction. This way rotating is only needed around the y axis. In order to balance conflicts with the dragging towards (or away) functionality, an intelligent tracking system of the touchpads changes should prioretize the dominant swiping movement instead of performing both, translation along the controller ray and rotation around the components y axis at the same time.
+
+The suggestion to enhance the seperation process by colorizing the componets before translating apart is considered to be very usefull and should be included too.
+
+As last point for imrovmement a general fix of all still occuring bugs should be prioritized as they have the greatest impact on the user interaction.
+The experiments have shown that the application and the user interaction concept were successfull, but have minor issues that could be adressed easily.
 
 \chapter{Problems}
 
+This chapter adresses problems that occured during all stages of this thesis and their impact on the final application that was developed.
+
 \section{Implementation problems}
 
+In order to enhance the real time compability as well as the general accuracy of the used ICP methods, a public open source code library of the stanford university was used and integrated as header file. Unfortunately this library had a lot of issues with the underlying dependecies and was not perfectly compatible to the framework. As for the sparse ICP implementation results were nowhere near usable, the alignments were diverging instead of getting closer. The basic point to point method which used iterative reweigting
+was more accurate. Unfortunately this method often failed to align scans due to finding local minima which were incorrect. The missing numerical stability included the possibility to produce INFINITE vectors or even NAN results.
 
+The real time requirement restrained the usage of more complex variants with refined error metrics due to the fact that the running time would increase signiflicantly. Final tests in the actual application with the vive showed that the calculation time increased as well due to the complexity of handling a complete framework which renders a 90Hz stereoscopic view for the vive and has to handle at the same time polled events of the technical devices such as pose events, button events and further more. As the usage of the ICP with more complex scans than the initial test set (the drill scan from the stanford 3D scan repo) completely failed to work in real time with subsampling and even failed to proper align without subsampling, the ICP has been cut out of the program.
 
 \section{Hardware problems}
 
-When working with VR several individual components have to be taken care of. As for the VIVE HMD from valve, the actual rendering is not done solely by the application, but has to be passed as a render context to the VR compositer, this compositor then renders the pictures for the HMD. The ensurance of compability between both, application and compositor has to be given at any time. Since the development of such applications is not easy this problem caused several delays in the time plan and could not be solved until 2 weeks before the end of this thesis. In detail the driver components for an HMD system have all be written and then linked to the actual application. If the application fails to load any driver the HMD can not connect to the application. To give an example: Even the simple VR example using openGL provided by valve (GITHUBLINK) contains 2000 lines of code, from which are nearly 1200 only initialization functions to start up the actual environment. So all of these functions have to be included and adapted to the own application.
+%When working with VR several individual components have to be taken care of. As for the VIVE HMD from valve, the actual rendering is not done solely by the application, but has to be passed as a render context to the VR compositer, this compositor then renders the %pictures for the HMD. The ensurance of compability between both, application and compositor has to be given at any time. Since the development of such applications is not easy this problem caused several delays in the time plan and could not be solved until 2 weeks before %the end of this thesis. In detail the driver components for an HMD system have all be written and then linked to the actual application. If the application fails to load any driver the HMD can not connect to the application. To give an example: Even the simple VR example using %openGL provided by valve (GITHUBLINK) contains 2000 lines of code, from which are nearly 1200 only initialization functions to start up the actual environment. So all of these functions have to be included and adapted to the own application.
+
+The maximum recommended distance between the two tracking stations of the vive system turned out to be below the actual distance. This may caused some problems such as tracking to be less accurate. The result of that is more difficult controll of the scans when dragging. As the main aligning operation is dragging and turning the scan with the controller, less accuracy of tracking can lead to less accuracy in alignment. This may distort the accuracy metrics used int this paper. Due to the fact that these trackers need to be mounted to the ceiling to work, changing their position in the room is not possible in this case. As the distance was only a recommendation and tracking seemed very accurate at any time of the tests the problem has been discarded from consideration.
+
+\section{Time shortage}
+
+As this application relies heavily on the cgv Framework a long time at the beginning of the thesis was spent in familiarizing oneself with it. The bug situations with the ICP function caused a great time delay during the end phase and the late finishing of the VR binding added an additional delay to the time planning. In the end this lead to a time shortage that forced the cut of the ICP feature as well as a shorter debugging time with the VR system before the experimental setup. This resulted in a not bug free but still working test environment with much room for improvement. Concluding from these events an improved strategy would be to move earlier from the 2D envornment used for testing and adding features to the full VR environment. Some concepts that worked well in the testing area, like the positioning above the table, as dragging and moving was very difficult there, were completly useless in VR. The experiments should have been tested earlier with VR in order to rethink some of the added features, or to find missing features. Additionally a self implemented version of an ICP based on the widely used Eigen libraries would have worked better than the versions that were found online and incompatible with the framework. This way the subsampling function could be integrated directly into the ICP and further improved the requirements of real-time and accuracy. On the other hand this would cause another delay and even exceed the tenable work for a bachelor thesis.
+
+%[https://www.vive.com/us/support/vive/category_howto/what-is-the-recommended-space-for-play-area.html]
+%https://www.w3.org/WAI/redesign/ucd
+
+\chapter{Conclusion}
 
 
 
-%\section{eine Grafik}
-%\begin{figure}[htbp]
-%	\centering
-%		\includegraphics{test.png}
-%	\caption{beschriftung}
-%	\label{fig:diplominf}
-%\end{figure}
-
-\[
-\sum_{i=1}^{100}x_i
-\]
-
-
-\cite*{}
 \end{document}
