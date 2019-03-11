@@ -1,38 +1,49 @@
-\contentsline {section}{\numberline {0.1}Motivation and Goals:}{2}{section.0.1}% 
-\contentsline {section}{\numberline {0.2}Tasks:}{2}{section.0.2}% 
-\contentsline {section}{\numberline {0.3}Optional Tasks:}{3}{section.0.3}% 
+\contentsline {section}{\numberline {0.1}Motivation and Goals:}{3}{section.0.1}% 
+\contentsline {section}{\numberline {0.2}Tasks:}{3}{section.0.2}% 
+\contentsline {section}{\numberline {0.3}Optional Tasks:}{4}{section.0.3}% 
 \contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}% 
-\contentsline {chapter}{\numberline {2}3D scan registration}{4}{chapter.2}% 
-\contentsline {section}{\numberline {2.1}Introduction to registration algorithms}{6}{section.2.1}% 
-\contentsline {subsection}{\numberline {2.1.1}Correspondences}{6}{subsection.2.1.1}% 
-\contentsline {subsection}{\numberline {2.1.2}KD-Trees}{7}{subsection.2.1.2}% 
-\contentsline {subsection}{\numberline {2.1.3}The iterative closest point algorithm}{7}{subsection.2.1.3}% 
-\contentsline {subsection}{\numberline {2.1.4}Subsampling}{8}{subsection.2.1.4}% 
-\contentsline {section}{\numberline {2.2}Analization and tests of used methods}{9}{section.2.2}% 
-\contentsline {chapter}{\numberline {3}Interactive VR-Concepts}{10}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}The virtual environment}{10}{section.3.1}% 
-\contentsline {subsection}{\numberline {3.1.1}The virtual workspace}{10}{subsection.3.1.1}% 
-\contentsline {subsection}{\numberline {3.1.2}Scaling}{11}{subsection.3.1.2}% 
-\contentsline {section}{\numberline {3.2}User centred Design for VR}{11}{section.3.2}% 
-\contentsline {subsection}{\numberline {3.2.1}Constraints and Affordances}{11}{subsection.3.2.1}% 
-\contentsline {subsection}{\numberline {3.2.2}Visual - physical conflict}{12}{subsection.3.2.2}% 
-\contentsline {subsection}{\numberline {3.2.3}Feedback design}{12}{subsection.3.2.3}% 
-\contentsline {subsection}{\numberline {3.2.4}Picking}{13}{subsection.3.2.4}% 
-\contentsline {subsection}{\numberline {3.2.5}Grouped scans}{14}{subsection.3.2.5}% 
-\contentsline {subsection}{\numberline {3.2.6}Scan positioning}{15}{subsection.3.2.6}% 
-\contentsline {subsubsection}{\numberline {3.2.6.1}The reset function}{15}{subsubsection.3.2.6.1}% 
-\contentsline {subsubsection}{\numberline {3.2.6.2}The position above table function}{15}{subsubsection.3.2.6.2}% 
-\contentsline {subsubsection}{\numberline {3.2.6.3}The loading functions}{16}{subsubsection.3.2.6.3}% 
-\contentsline {subsubsection}{\numberline {3.2.6.4}The reposition execution animation}{16}{subsubsection.3.2.6.4}% 
-\contentsline {subsubsection}{\numberline {3.2.6.5}The dragging fucntion}{16}{subsubsection.3.2.6.5}% 
-\contentsline {subsection}{\numberline {3.2.7}Additional application concepts}{17}{subsection.3.2.7}% 
-\contentsline {chapter}{\numberline {4}Interactive VR-user study}{18}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}Test setup}{18}{section.4.1}% 
-\contentsline {subsection}{\numberline {4.1.1}Equipment}{18}{subsection.4.1.1}% 
-\contentsline {subsection}{\numberline {4.1.2}Guidance}{18}{subsection.4.1.2}% 
-\contentsline {section}{\numberline {4.2}Test results}{18}{section.4.2}% 
-\contentsline {chapter}{\numberline {5}Evaluation}{19}{chapter.5}% 
-\contentsline {chapter}{\numberline {6}Problems}{20}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Implementation problems}{20}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}Hardware problems}{20}{section.6.2}% 
-\contentsline {chapter}{\nonumberline Bibliography}{21}{chapter*.4}% 
+\contentsline {chapter}{\numberline {2}3D scan registration}{5}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Related Work}{5}{section.2.1}% 
+\contentsline {section}{\numberline {2.2}Introduction to registration algorithms}{6}{section.2.2}% 
+\contentsline {subsection}{\numberline {2.2.1}Correspondences}{8}{subsection.2.2.1}% 
+\contentsline {subsection}{\numberline {2.2.2}KD-Trees}{8}{subsection.2.2.2}% 
+\contentsline {subsection}{\numberline {2.2.3}The iterative closest point algorithm}{9}{subsection.2.2.3}% 
+\contentsline {subsection}{\numberline {2.2.4}Subsampling}{10}{subsection.2.2.4}% 
+\contentsline {chapter}{\numberline {3}Interactive VR-Concepts}{11}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}The virtual environment}{11}{section.3.1}% 
+\contentsline {subsection}{\numberline {3.1.1}The virtual workspace}{11}{subsection.3.1.1}% 
+\contentsline {subsection}{\numberline {3.1.2}Scaling}{12}{subsection.3.1.2}% 
+\contentsline {section}{\numberline {3.2}User centred Design for VR}{13}{section.3.2}% 
+\contentsline {subsection}{\numberline {3.2.1}Constraints and Affordances}{13}{subsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.2.2}Visual - physical conflict}{14}{subsection.3.2.2}% 
+\contentsline {subsection}{\numberline {3.2.3}Feedback design}{14}{subsection.3.2.3}% 
+\contentsline {subsection}{\numberline {3.2.4}Picking}{14}{subsection.3.2.4}% 
+\contentsline {subsection}{\numberline {3.2.5}Grouped scans}{16}{subsection.3.2.5}% 
+\contentsline {subsection}{\numberline {3.2.6}Scan positioning}{18}{subsection.3.2.6}% 
+\contentsline {subsubsection}{\numberline {3.2.6.1}The reset function}{18}{subsubsection.3.2.6.1}% 
+\contentsline {subsubsection}{\numberline {3.2.6.2}The position above table function}{18}{subsubsection.3.2.6.2}% 
+\contentsline {subsubsection}{\numberline {3.2.6.3}The loading functions}{19}{subsubsection.3.2.6.3}% 
+\contentsline {subsubsection}{\numberline {3.2.6.4}The reposition execution animation}{19}{subsubsection.3.2.6.4}% 
+\contentsline {subsubsection}{\numberline {3.2.6.5}The dragging function}{19}{subsubsection.3.2.6.5}% 
+\contentsline {subsection}{\numberline {3.2.7}Controls Mapping}{20}{subsection.3.2.7}% 
+\contentsline {subsection}{\numberline {3.2.8}Additional application concepts}{21}{subsection.3.2.8}% 
+\contentsline {chapter}{\numberline {4}Interactive VR-user study}{23}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Test setup}{23}{section.4.1}% 
+\contentsline {subsection}{\numberline {4.1.1}Equipment}{25}{subsection.4.1.1}% 
+\contentsline {subsection}{\numberline {4.1.2}Guidance}{25}{subsection.4.1.2}% 
+\contentsline {subsection}{\numberline {4.1.3}Tracked metrics}{25}{subsection.4.1.3}% 
+\contentsline {subsection}{\numberline {4.1.4}Calculation of translation and rotation Error}{26}{subsection.4.1.4}% 
+\contentsline {section}{\numberline {4.2}Test results}{27}{section.4.2}% 
+\contentsline {chapter}{\numberline {5}Evaluation}{29}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Analysis of error metrics}{29}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}Analysis of user interactions}{30}{section.5.2}% 
+\contentsline {section}{\numberline {5.3}Experiment conclusion}{32}{section.5.3}% 
+\contentsline {chapter}{\numberline {6}Problems}{33}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Implementation problems}{33}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}Hardware problems}{33}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}Time shortage}{34}{section.6.3}% 
+\contentsline {chapter}{\numberline {7}Conclusion}{35}{chapter.7}% 
+\contentsline {chapter}{\numberline {8}Appendix}{37}{chapter.8}% 
+\contentsline {section}{\numberline {8.1}Diagramms and statistics}{37}{section.8.1}% 
+\contentsline {section}{\numberline {8.2}Survey form}{38}{section.8.2}% 
+\contentsline {chapter}{\nonumberline Bibliography}{39}{chapter*.4}% 

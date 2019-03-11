@@ -5,40 +5,38 @@ The style file: plain.bst
 Database file #1: new_literature_DB.bib
 Warning--entry type for "Besl92" isn't style-file defined
 --line 5 of file new_literature_DB.bib
-Warning--I didn't find a database entry for "Jerald"
-Warning--to sort, need author or key in vivehelp
-Warning--to sort, need author or key in w3ucdISO
-Warning--empty year in Chao
+Warning--I didn't find a database entry for "vivehelp"
+Warning--to sort, need author or key in statisticaVR18
 You've used 13 entries,
             2118 wiz_defined-function locations,
-            583 strings with 6097 characters,
-and the built_in function-call counts, 3857 in all, are:
-= -- 347
-> -- 206
+            590 strings with 6271 characters,
+and the built_in function-call counts, 3971 in all, are:
+= -- 365
+> -- 218
 < -- 0
-+ -- 86
-- -- 69
-* -- 268
-:= -- 644
-add.period$ -- 39
++ -- 90
+- -- 73
+* -- 276
+:= -- 676
+add.period$ -- 40
 call.type$ -- 13
-change.case$ -- 70
+change.case$ -- 74
 chr.to.int$ -- 0
-cite$ -- 16
+cite$ -- 14
 duplicate$ -- 146
-empty$ -- 330
-format.name$ -- 69
-if$ -- 799
+empty$ -- 329
+format.name$ -- 73
+if$ -- 822
 int.to.chr$ -- 0
 int.to.str$ -- 13
 missing$ -- 11
-newline$ -- 63
-num.names$ -- 24
-pop$ -- 101
+newline$ -- 64
+num.names$ -- 26
+pop$ -- 102
 preamble$ -- 1
-purify$ -- 60
+purify$ -- 62
 quote$ -- 0
-skip$ -- 97
+skip$ -- 91
 stack$ -- 0
 substring$ -- 144
 swap$ -- 18
@@ -46,8 +44,8 @@ text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 50
-warning$ -- 3
-while$ -- 29
+warning$ -- 1
+while$ -- 31
 width$ -- 15
-write$ -- 126
-(There were 5 warnings)
+write$ -- 133
+(There were 3 warnings)

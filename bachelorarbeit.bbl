@@ -1,10 +1,7 @@
 \begin{thebibliography}{10}
 
-\bibitem{vivehelp}
-
-
-\bibitem{w3ucdISO}
-
+\bibitem{statisticaVR18}
+Global virtual reality device shipments by vendor 2017-2019, December 2018.
 
 \bibitem{bentley1975}
 Jon~Louis Bentley.
@@ -15,13 +12,17 @@ Jon~Louis Bentley.
 Chen Chao and Ioannis Chao.
 \newblock Semi-automatic range to range registration: A feature-based method.
 \newblock In {\em Fifth International Conference on 3-D Digital Imaging and
-  Modeling}. {IEEE}.
+  Modeling}. {IEEE}, 2005.
 
 \bibitem{Garcia2008}
 Vincent Garcia, Eric Debreuve, and Michel Barlaud.
 \newblock Fast k nearest neighbor search using {GPU}.
 \newblock In {\em 2008 {IEEE} Computer Society Conference on Computer Vision
   and Pattern Recognition Workshops}. {IEEE}, jun 2008.
+
+\bibitem{w3ucdISO}
+Shawn~Lawton Henry and Justin Thorp.
+\newblock Notes on user centered design process (ucd), March 2004.
 
 \bibitem{Jerald2015}
 Jason Jerald.
@@ -64,7 +65,7 @@ S.~Rusinkiewicz and M.~Levoy.
 \newblock In {\em Proceedings Third International Conference on 3-D Digital
   Imaging and Modeling}. {IEEE} Comput. Soc, 2001.
 
-\bibitem{salvi2007}
+\bibitem{Salvi2007}
 Joaquim Salvi, Carles Matabosch, David Fofi, and Josep Forest.
 \newblock A review of recent range image registration methods with accuracy
   evaluation.

@@ -69,6 +69,7 @@
   author    = {Chen Chao and Ioannis Chao},
   title     = {Semi-Automatic Range to Range Registration: A Feature-Based Method},
   booktitle = {Fifth International Conference on 3-D Digital Imaging and Modeling},
+  year      = {2005},
   publisher = {{IEEE}},
   doi       = {10.1109/3dim.2005.72},
   file      = {:01443253.pdf:PDF},
@@ -137,12 +138,21 @@
   url     = {http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.119.667&rep=rep1&type=pdf},
 }
 
-@Misc{w3ucdISO,
-  url = {https://www.w3.org/WAI/redesign/ucd},
+@Misc{statisticaVR18,
+  title     = {Global virtual reality device shipments by vendor 2017-2019},
+  month     = dec,
+  year      = {2018},
+  timestamp = {2019-03-10},
+  url       = {https://www.statista.com/statistics/671403/global-virtual-reality-device-shipments-by-vendor/},
 }
 
-@Misc{vivehelp,
-  url = {[https://www.vive.com/us/support/vive/category_howto/what-is-the-recommended-space-for-play-area.html]},
+@Misc{w3ucdISO,
+  author    = {Shawn Lawton Henry and Justin Thorp},
+  title     = {Notes on User Centered Design Process (UCD)},
+  month     = mar,
+  year      = {2004},
+  timestamp = {2008-04-18},
+  url       = {https://www.w3.org/WAI/redesign/ucd},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
