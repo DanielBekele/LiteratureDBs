@@ -16,32 +16,29 @@
 \betreuer{Prof. Dr. Stefan Gumhold}
 \bibfiles{new_literature_DB}
 \problem{
-\section{Motivation and Goals:}
-When 3D scanning real objects several scans from different views need to be acquired and combined. For high quality reconstruction of a surface model, the relative 3D scanner poses of the different views need to be determined accurately before combining the points from the individual 3D scans. This process is also called registration. The registration problem can be split into coarse and fine registration. In coarse registration a registration with low accuracy is determined which is further refined by a fine registration, for which fully automatic methods work efficiently. The goal of the thesis is to study the coarse registration problem in an interactive setting where a user adjusts the relative poses in a VR environment and to compare its efficiency with a WIMP based interface, e.g. the one implemented in MeshLab [].
-\section{Tasks:}
+\section*{Motivation and Goals:}
+When 3D scanning real objects several scans from different views need to be acquired and combined. For high quality reconstruction of a surface model, the relative 3D scanner poses of the different views need to be determined accurately before combining the points from the individual 3D scans. This process is also called registration. The registration problem can be split into coarse and fine registration. In coarse registration a registration with low accuracy is determined which is further refined by a fine registration, for which fully automatic methods work efficiently. The goal of the thesis is to study the coarse registration problem in an interactive setting where a user adjusts the relative poses in a VR environment and to compare its efficiency with a WIMP based interface, e.g. the one implemented in MeshLab.
+\section*{Tasks:}
 \begin{itemize}
 \item Literature research on registration approach with a focus on interactive and semi-automatic approaches
 \item Collection of a representative set of 3D scan collections
 \item Design of a VR environment for the interactive registration realizing the concept of a workbench and a natural alignment of the 3D scan collection that needs to be registered in a way the selection of individual scans is efficient.
 \item Implementation of VR-based picking and positioning strategy of individual point clouds based on the interaction capabilities of a VIVE VR set.
 \item Development and implementation of a strategy to guide the user through the process of registering all scans of a dataset
-\item Integration of an automatic fine registration algorithm like SparseICP [].
+\item Integration of an automatic fine registration algorithm like SparseICP.
 \item Evaluation of the developed methods in a qualitative user study based on a ground truth dataset provided by the Chair of Computer Graphics and Visualization.
 \end{itemize}
-\section{Optional Tasks:}
+\section*{Optional Tasks:}
 \begin{itemize}
 \item Integration of a surface reconstruction algorithm in a background process to preview the reconstructed surface based on the current intermediate registration result
 \item Design and implement specific interactions and visualizations that help in a faster or more accurate user based registration
 \item Improvement of the realism of the VR environment by integrating detailed and textured 3D models.
 \end{itemize}
 }
-\copyrighterklaerung{Hier soll jeder Autor die von ihm eingeholten
-Zustimmungen der Copyright-Besitzer angeben bzw. die in Web Press
-Rooms angegebenen generellen Konditionen seiner Text- und
-Bild"ubernahmen zitieren.}
-\acknowledgments{I would like to thank Prof. Dr. Gumhold for his guidance and patience during this thesis. Especially for his help with the framework and the VR interface that made this thesis possible.
-I would also like to thank my roomates for the help as test persons and their help with questions and constant reminders that my time is short. Further more I would like to thank the chair of computer graphics for providing the ground truth data.}
-\abstracten{This bachelor thesis provides a short introduction into the field of 3D scan registration with a focus on interactive registration techniques. The main goal was to investigate if a VR envorinment for coarse registration alignment is an efficient method and to develop such an application. In addition to this, an user interaction strategy was developed and is examined in detail. This application was then tested in a quality user study and evaluated. The results showed an accurate coarse alignment with an average of 70-120mm translation error and 6\textdegree - 10\textdegree rotation error. The test persons rated the provided interaction interface good with minor improvments to be done. This thesis is interesting for persons interested in VR technology and interaction concepts as well as for the field of 3D scan registration with semi automatic methods.}
+\copyrighterklaerung{}
+\acknowledgments{I would like to thank Prof. Dr. Gumhold for his guidance and patience during this thesis, especially for his help with the framework and the VR interface that made this thesis possible.
+I would also like to thank my roomates for the help as test persons and their support. Further more I would like to thank the chair of computer graphics for providing the ground truth data for the experiments.}
+\abstracten{This bachelor thesis provides a short introduction into the field of 3D scan registration with a focus on interactive registration techniques. The main goal was to investigate if a VR envorinment for coarse registration alignment is an efficient method and to develop such an application. In addition to this, an user interaction strategy was developed and is examined in detail. This application was then tested in a quality user study and evaluated. The results showed an accurate coarse alignment with an average of 70-120mm translation error and 6\textdegree - 10\textdegree rotation error. The test persons rated the provided interaction interface good with minor improvments to be done. This thesis is adresses anyone interested in VR technology and interaction concepts as well as the field of 3D scan registration with semi automatic methods.}
 
 \begin{document}
 
@@ -55,7 +52,7 @@ This thesis goal is to conduct research in previous attempts for solutions of th
 
 \chapter{3D scan registration}
 
-As an introduction to the topic this first chapter will briefly define the registration problem as well as it will introduce related work in the field of interactive registration. The second part will provide the mathematical background of registration algorithms.
+As an introduction to the topic this first chapter will briefly define the registration problem as well as it will introduce related work in the field of interactive registration. The second part will examine the mathematical basics of registration algorithms.
 
 The registration problem is defined as finding the matching transformation for one set of data to match to a target set of data\cite{Ji2017}. These sets of data are mostly point clouds, but are not limited to them, as the problem can be extended to meshes and surfaces or even pictures\cite{Salvi2007}.
 This task can be splitted into the coarse and fine registration, the first one is a rough guess, the second one the actual registration that brings both data as close as possible.
@@ -120,7 +117,7 @@ Their main advantage is their runtime for knn-querys:
 \begin{quote}
 "for nearest neighbor queries [empirically observed average running time of \textit{O(log n)}.]" \cite{bentley1975}
 \end{quote}
-Using KD-trees for a knn-query results in a much better performance since building such a tree and using it costs less than using brute force method. Additionally through parallelization the actual runtime can further be reduced. The code excerpt below shows a snippet which uses a KD-tree for a knn-query executing parallel. This implementation is used during the execution of the fine alignment of the version of the ICP which was tested during development. The code is taken from the stanford university.
+Using KD-trees for a knn-query results in a much better performance since building such a tree and using it costs less than using brute force method. Additionally through parallelization the actual runtime can further be reduced. The code excerpt below shows a snippet which uses a KD-tree for a knn-query executing parallel. This implementation was used during the execution of a fine alignment by the version of the ICP that was tested during development. The code is taken from the Stanford University\cite{Bouaziz2013}.
 
 \begin{figure}[htbp]
 \begin{lstlisting}[frame=trbl]
@@ -166,7 +163,7 @@ In order to develop an interactive registration application for a user study, th
 
 The virtual environment is defined as the virtual entity that surrounds the user of a VR technology during the time he is using an head mounted display (HMD). Different to augmented reality which adds an additional layer/interface to the existing reality, letting the user see his natural environment, VR completely surrounds the user and the actual environment is not visible any more. What the user can see and percept is solely depended from the created virtual world\cite{Milgram1995}.
 
-This environment should provide orientation in the virtual room as well as interfaces to work in it. The virtual environment is not limited but moving in it is not as easy, as natural movement is restrained to the maximum trackable area of the used VR equipment. 
+This environment should provide orientation in the virtual room as well as interfaces to work in it. The useable space is not limited, but natural movement is restrained due to the maximum trackable area of the used VR equipment, as well as the length of the cables. 
 
 \subsection{The virtual workspace}
 
@@ -185,8 +182,7 @@ To avoid cyber sickness or claustrophobic events, the room has only one wall goi
  
 \subsection{Scaling}
 
-Greater objects may not fit in the room at all and need to be scaled to fit, on the other hand some are so small that the user may have problems to see their important features properly. To give the user the option to adjust his, a scaling function is bound to one of the controllers touchpad and can be used with the drag motion to scale the 3D scan. Additional attention has to be paid due to the fact that scaling the scans will result in scaled translations and rotations. To ensure that the ground truth rotations and translations can be compared with the scaled alignment the inverse transformation hast to be applied to all alignment translations and rotations first. This is easily done by reversing the scaling factor. The scaling function uses a uniform scale matrix as shown below with scaling factor k as well as its inverse on the right side.
-
+Greater objects may not fit in the room at all and need to be scaled to fit and some are so small that the user may have problems to see their important features properly. To give the user the option to adjust his, a scaling function is bound to the configuration file variables and can be loaded on application start. Additional attention has to be paid due to the fact that scaling the scans will result in unscaled translations. To ensure that the ground truth translations can be compared with the scaled alignment the inverse transformation hast to be applied to all alignment translations first. This is easily done by reversing the scaling factor. The scaling function uses a uniform scale matrix as shown below with scaling factor k as well as its inverse on the right side. Note that rotations reamain equal if the scaling is uniform, which is the case in this application.
 
 \makebox[\textwidth]{
 $\begin{pmatrix}
@@ -208,7 +204,7 @@ S_x = S_y = S_z = k,  k != 0
 \section{User centred Design for VR}
 
 When building an VR based application, traditional 2D user interface design cannot be simply adapted to 3D.
-Using popups or mouse emulation projected onto the view frustxum of the user constraints interaction to a 2-Dimensional experience which is rather inefficient compared to the possibilities VR could provide.
+Using pop-ups or mouse emulation projected onto the view frustxum of the user constraints interaction to a 2-Dimensional experience which is rather inefficient compared to the possibilities VR could provide.
 To include VR Technology to the project, especially the cgv-Framework, new user interaction methods have to be provided and tested. Since the user is the active part of the application, controlling the actions and main methods of the scan alignment process, user centred design (UCD) had to be chosen. 
 Human centred design processes for interactive systems, ISO 13407 (1999), states: 
 \begin{quote}
@@ -222,7 +218,7 @@ Affordances describe the relationship between an abstract object or goal a user 
 To improve interaction design it is necessary that these affordances are appropriate and the given actions as easy doable\cite{Jerald2015}.
 In our application an affordance would be the relation between moving a scan that has been picked by moving the tracked motion controller. 
 
-Constraints on the other hand are limitations of the given actions a user has. This limitations may be necessary to not confuse the user or to simplify the usage of given methods. A user may move a scan by fault out of the trackable area or below the ground. By adding a simple collision detection that prevents the user from moving scans out of these limitations moving scans is less prone to errors. This would be a constraint to the action of moving the scan with the tracked motion controller. In the application moving scans below zero level should not be possible, the scans bounding box is, moved tracked and evaluated. If an action would position any transformed corner point of the box, the translation is stopped and the corresponding controller receives a signal to vibrate. This indicates a violation of physical constraints to the user, preventing him from achieving an unwanted program state with scans hidden below zero ground level. These scans would be invisible and as seen in the tests caused several problems.
+Constraints on the other hand are limitations of the given actions a user has. This limitations may be necessary to not confuse the user or to simplify the usage of given methods. A user may move a scan out of the trackable area or below the ground. By adding a simple collision detection that prevents the user from moving scans out of these limitations moving scans is less prone to errors. This would be a constraint to the action of moving the scan with the tracked motion controller. In the application moving scans below zero level should not be possible, the scans bounding box is, moved tracked and evaluated. If an action would position any transformed corner point of the box, the translation is stopped and the corresponding controller receives a signal to vibrate. This indicates a violation of physical constraints to the user, preventing him from achieving an unwanted program state with scans hidden below zero ground level. These scans would be invisible and as seen in the tests caused several problems. Due to time shortage this feature was not implemented.
 
 \subsection{Visual - physical conflict}
 
@@ -232,8 +228,8 @@ To avoid or at least lower the impact of this conflict user-feedback can be used
 \subsection{Feedback design}
 
 Feedback is an essential user experience, which should result in information gain about the result or status of a task or object the user interacted with\cite{Jerald2015}.
-A use case in our program would be the switching of colours of a scan when its selected or not. A global selection colour (Bright Red) indicates that this object is selected and will be reference point for further actions. Since scan alignment needs at least 2 scans to be practical the application has a 2 step selection:
-Selecting the first scan changes its colour to bright red. But when the next scan is selected the first one changes its colour to a less brighter red signalling it is the secondary pick. Applying the alignment now starts an ICP which moves the second picked scan (the one that is now active) toward the first one.
+A use case in our program would be the switching of colours of a scan when its selected or not. A global selection colour (bright red, hex:FF0000) indicates that this object is selected and will be reference point for further actions. Since scan alignment needs at least 2 scans to be practical the application has a 2 step selection:
+Selecting the first scan changes its colour to bright red. But when the next scan is selected the first one changes its colour to a less brighter red (AA0000) signalling it is the secondary pick. Applying the alignment now unites the components groups to one.
 
 \subsection{Picking}
 
@@ -307,7 +303,7 @@ Therefore the minimal translation distance from the centre point can be calculat
 \]
 C equals the minimal distance between the middle points of two separate scans, which is equal to the maximal bounding box diagonal. The minimal translation in this formula is represented by a.
 The assumption of the program is that the middle point of the scans is near to the averaged middle point of all its points. This is only the case is the distribution of points is evenly among the scans bounding box, and if the bounding box is not heavily deformed due to outliers.
-As further suggestion an outlier detection on loading the scans to the program should ensure this restraint.
+As further suggestion an outlier detection that is performed on loading of the scans to the program should ensure this restraint.
 The application uses a factor of 1.1 of this minimal distance to avoid errors due to the fact that the computer works with floats and doubles which are not always precise and that there may be a distance between the averaged middle point of the group and the middle point of the Bounding Boxes of the scans.
 After this splitting translation was executed, the user now can chose a single component out of the group and separate it. The remaining group turns back to its initial state, the separated scan is lifted above the group.
 
@@ -321,7 +317,7 @@ This function works as a simple reset. The user forces the components to all dis
 
 \subsubsection{The position above table function}
 
-This function is a repositioning function to reposition a picked group to the middle table in the lowest height available. This height is determined by the lowest corner z-coordinate of the lowest bounding box of the group. Additionally the groups averaged middle point is now in the middle of the table, which is by default the middle of the room.
+This function is a repositioning function to reposition a picked group to the middle table in the lowest height available. This height is determined by the lowest corner z-coordinate of the lowest bounding box of the group. Additionally the groups averaged middle point is now in the middle of the table, which is by default the middle of the room. (coordinate 0,0,0)
 
 \subsubsection{The loading functions}
 
@@ -364,7 +360,7 @@ Afterwards every test person is asked to fill out a short form to evaluate the u
 
 \section{Test setup}
 
-The tests took place in the Holodeck room of the faculty of computing since. In this room the tracking stations were set up in two corners of the room diagonal to each other. The trackable area was sized to fit at least 3.5 x 3.5 meters and has a real table in it to emulate the virtual table. The exact measurement of the table was estimated beforehand and the program was initialized with the exact virtual copy of this table. The users now interact with a virtual projection of a real existing table.
+The tests took place in the Holodeck room of the faculty of computing since. In this room the tracking stations were set up in two corners of the room diagonal to each other. The trackable area was sized to fit at least 3.5 x 3.5 meters and has a virtual table. The table was designed to take the middle of the room with at least 1 meter space between the rooms edges.
 
 The full test setup from above can be seen in figure ~\ref{fig:test}
 
@@ -381,7 +377,7 @@ The dataset used for this test the owl data set which contains normals and a kno
 \subsection{Equipment}
 
 The complete setup uses two vive hand controllers, each with a touchpad, an analogue trigger, a menu button, a grip button and the touchpads themselves have four press-states (up,right, down left). The system button can not be called by the program, it will always bring up the steam menu and is therefore not included as interaction. The two tracking stations are mounted at eh ceiling of the room in about 6.25meters distance, which is a bit too much for the optimal distance that is suggested by valve. The head mounted display (HMD) is attached to a computer on the north side and has about x meters cable length, enough to reach every corner of the room. To avoid possible problems with the cable twisting around the user, the supervisor always keeps track of the cables situation during the experiment.
-The used pc for this study was a four core machine (Intel i5 2700k) with a Nvidia GeForce 1060 GTX graphics card. The capability of the system to provide a 90Hz picture with a constant framerate and no framedrops was tested before and was monitored during the tests.
+The used pc for this study was a four core machine (Intel i5 2700k) with a Nvidia GeForce 1060 GTX graphics card. The capability of the system to provide a 90Hz picture with a constant framerate and a low amount framedrops was tested before.
 
 \subsection{Guidance}
 
@@ -508,29 +504,30 @@ The maximum recommended distance between the two tracking stations of the vive s
 
 \section{Time shortage}
 
-The bug situations with the ICP function caused a great time delay during the end phase and the late finishing of the VR binding added an additional delay to the time planning. In the end this lead to a time shortage that forced the cut of the ICP feature as well as a shorter debugging time with the VR system before the experimental setup. This resulted in a not bug free but still working test environment with much room for improvement. Concluding from these events an improved strategy would be to move earlier from the 2D envornment used for testing and adding features to the full VR environment. Some concepts that worked well in the testing area, like the positioning above the table, as dragging and moving was very difficult there, were completly useless in VR. The experiments should have been tested earlier with VR in order to rethink some of the added features, or to find missing features. Additionally a self implemented version of an ICP based on the widely used Eigen libraries would have worked better than the versions that were found online and incompatible with the framework. This way the subsampling function could be integrated directly into the ICP and further improved the requirements of real-time and accuracy. On the other hand this would cause another delay and even exceed the demandable work for a bachelor thesis.
+The bug situations with the ICP function caused a great time delay during the end phase and the late finishing of the VR binding added an additional delay to the time planning. In the end this lead to a time shortage that forced the cut of the ICP feature as well as a shorter debugging time with the VR system before the experimental setup. This resulted in a not bug free but still working test environment with much room for improvement. Concluding from these events an improved strategy would be to move earlier from the 2D envornment used for testing and adding features to the full VR environment. Some concepts that worked well in the testing area, like the positioning above the table, as dragging and moving was very difficult there, were completly useless in VR. The experiments should have been tested earlier with VR in order to rethink some of the added features, or to find missing features. Additionally a self implemented version of an ICP based on the widely used Eigen libraries could have worked better than the versions that were found online and incompatible with the framework. This way the subsampling function could be integrated directly into the ICP and further improved the requirements of real-time and accuracy. On the other hand this would cause another delay and even exceed the demandable work for a bachelor thesis.
 
 %[https://www.vive.com/us/support/vive/category_howto/what-is-the-recommended-space-for-play-area.html]
 %
 
 \chapter{Conclusion}
 
-For this chapter the thesis problems are reviewed and checked if they were resolved and if not what additional steps are necessary. 
+For this chapter the thesis problems are reviewed and checked if they were resolved and if not what additional steps would be necessary. 
+
 The literature reasearch on interactive registration methods was done in the first chapter about 3D registration, but is very short due to the fact that there are not as many interactive approaches to the problem of 3D scan registration. However it was enough to gather information from comparable work and use this information to avoid similiar problems during the experiments.
 
-The collection of a representative set of 3D scans was provided by the char of computer graphics of the TU dresden. During the first test phases the 3D scan repository of the university of stanford was used. Mainly the well known stanford bunny but as well the drill scan, which has very few points and was especially usefull during debug mode.
+The representative set of 3D scans was provided by the chair of computer graphics of the TU Dresden. During the first test phases the 3D scan repository of the university of stanford was used. Mainly the well known Stanford bunny but as well the drill scan, which has very few points and was especially usefull during debug mode.
 
-The Design of a VR environment was successful and as the experiments have shown an interactive registration was not only possible but also efficient. The average time needed for a full alignment was a bit above ten minutes and users of the application rated it as efficent and positive with some minor missing details.The picking and positioning strategy was successful and turned out to be intuitive and easy to pick up for most users. A small improvement on the way rotation can be adjusted was missing.
+The Design of a VR environment was successful and consequently the experiments have shown an interactive registration was not only possible but also efficient. The average time needed for a full alignment was a bit above ten minutes and users of the application rated it as efficent and positive with some minor missing details.The picking and positioning strategy was successful and turned out to be intuitive and easy to pick up for most users. A small improvement on the way rotation can be adjusted was missing.
 
-The strategy and development to guide the users was cut short due to a lack of time. Instead an oral introduction to the process has been given before each experiment, which was enough for all users to fullfill their task. However test persons mentioned that they were missing a way to see the controlls and had to ask sometimes if they forgot a function. As a concept an reconstruction of the controller with small icons on every button should be considered. These icons should give a hint what functionality the specific button has and would help the user to understand the features. Additionally a short introduction clip or popup should instruct the user to what his or her task is. With these additions a supervisor explaining everything at the beginning would become obsolete.
+The strategy and development to guide the users was cut short due to a lack of time. Instead an oral introduction for the process has been given before each experiment, which was enough for all users to fulfill their task. However test persons mentioned that they were missing a way to see the controlls and sometimes had to ask if they forgot a function. As a concept an reconstruction of the controller with small icons on every button should be considered. These icons should give a hint what functionality the specific button has and would help the user to understand the features. Additionally a short introduction clip or pop-up should instruct the user to what his or her task is. With these additions a supervisor explaining everything at the beginning would become obsolete.
 
-The automatic fine registration algorithm could not be included as statet in the chapter implementation problems. A possible solution is an own simple version of the ICP that uses the already implemented subsampling methods and could work more efficent than third party provided software. Because the coarse alignment generated from user input is quite accurate the ICP would not need to be as strongly optimized as other versions that are used in fully automated registration software. This would also enable real time calculations of the fine registration, as in this interactive system a long ICP calculation would lock down user interaction during that time.
+The automatic fine registration algorithm could not be included as statet in the section ~\nameref{ch:Problems}. A possible solution is an own simple version of the ICP that uses the already implemented subsampling methods and could work more efficiently than third party provided software. Because the coarse alignment generated from user input is quite accurate the ICP would not need to be as strongly optimized as other versions that are used in fully automated registration software. This would also enable real time calculations of the fine registration, as in this interactive system a long ICP calculation would lock down user interaction during that time.
 
-The evaluation and conducting of a qualitative user study was performed with success and proved that the concept of an interactive 3D scan registration software can work. The application developed during this thesis needs some small improvements and additions and then could be tested again with more conditions and an higher accuracy.
+The evaluation and conducting of a qualitative user study was performed successfully and proved that the concept of an interactive 3D scan registration software can work. The application developed during this thesis needs some small improvements and additions and then could be tested again with more conditions and an higher accuracy.
 
 Due to the time shortage no optional tasks were fulfilled.
 
-The concepts used in this thesis can be applied to several fields of usage. As already mentioned in related work some fields of application like medical scans already need a person as supervisor to check the scans produced by machines. In this field an efficent interactive registration method for MRT and other medical scans may be useful replenishment to enhance the processing of these scans. In order to refine this method further research in improvements to the application is needed.
+The concepts used in this thesis can be applied to several fields of use. As already mentioned in related work some fields of application like medical scans already need a person as supervisor to check the scans created by machines. In this field an efficent interactive registration method for MRT and other medical scans may be useful replenishment to enhance the processing of these scans. In order to refine this method further research in improvements to the application is needed.
 As a second possible field of use the gaming industry may use these developed methods and concepts for 3D virtual puzzle games, as there is now the possibilty to create more complex and challenging puzzle of real 3D scans that the user now can align. As mentioned by all participants of the study, the general experience was interessting and some also mentioned that they did enjoy the task to put together a 3D scan, though even it was nothing more than a point cloud in that time. By adding a more realistic environment and even surface reconstraction as well as textures the application could provide a game like experience.
 
 My own impression of the application is that with addition of several features and improvments i assume that an additional study could provide interesting insights to the concept of interactive 3D scan registration.

@@ -7,45 +7,45 @@ Warning--entry type for "Besl92" isn't style-file defined
 --line 5 of file new_literature_DB.bib
 Warning--I didn't find a database entry for "vivehelp"
 Warning--to sort, need author or key in statisticaVR18
-You've used 13 entries,
+You've used 14 entries,
             2118 wiz_defined-function locations,
-            590 strings with 6271 characters,
-and the built_in function-call counts, 3971 in all, are:
-= -- 365
-> -- 218
-< -- 0
-+ -- 90
-- -- 73
-* -- 276
-:= -- 676
-add.period$ -- 40
-call.type$ -- 13
-change.case$ -- 74
+            600 strings with 6546 characters,
+and the built_in function-call counts, 4470 in all, are:
+= -- 421
+> -- 236
+< -- 1
++ -- 97
+- -- 79
+* -- 308
+:= -- 748
+add.period$ -- 44
+call.type$ -- 14
+change.case$ -- 80
 chr.to.int$ -- 0
-cite$ -- 14
-duplicate$ -- 146
-empty$ -- 329
-format.name$ -- 73
-if$ -- 822
+cite$ -- 15
+duplicate$ -- 169
+empty$ -- 368
+format.name$ -- 79
+if$ -- 938
 int.to.chr$ -- 0
-int.to.str$ -- 13
-missing$ -- 11
-newline$ -- 64
-num.names$ -- 26
-pop$ -- 102
+int.to.str$ -- 14
+missing$ -- 12
+newline$ -- 69
+num.names$ -- 28
+pop$ -- 108
 preamble$ -- 1
-purify$ -- 62
+purify$ -- 67
 quote$ -- 0
-skip$ -- 91
+skip$ -- 110
 stack$ -- 0
-substring$ -- 144
-swap$ -- 18
-text.length$ -- 0
+substring$ -- 181
+swap$ -- 28
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 50
+type$ -- 54
 warning$ -- 1
-while$ -- 31
-width$ -- 15
-write$ -- 133
+while$ -- 36
+width$ -- 16
+write$ -- 147
 (There were 3 warnings)

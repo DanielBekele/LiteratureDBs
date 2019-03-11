@@ -8,6 +8,13 @@ Jon~Louis Bentley.
 \newblock Multidimensional binary search trees used for associative searching.
 \newblock {\em Commun. ACM}, 18(9):509--517, September 1975.
 
+\bibitem{Bouaziz2013}
+Sofien Bouaziz, Andrea Tagliasacchi, and Mark Pauly.
+\newblock Sparse iterative closest point.
+\newblock In {\em Proceedings of the Eleventh Eurographics/ACMSIGGRAPH
+  Symposium on Geometry Processing}, SGP '13, pages 113--123, Aire-la-Ville,
+  Switzerland, Switzerland, 2013. Eurographics Association.
+
 \bibitem{Chao}
 Chen Chao and Ioannis Chao.
 \newblock Semi-automatic range to range registration: A feature-based method.
